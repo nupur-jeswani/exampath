@@ -1,17 +1,42 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Nav from "./components/Navbar/nav";
+import Signup from "./components/Auth/signup";
+import ForgotPassword from "./components/Auth/forgotPassword";
+import { AuthProvider } from "./components/Auth/AuthContext";
+import Login from "./components/Auth/login";
+import PrivateRoute from "./components/privateRoutes";
 import { Gre } from "./components/Examinations/gre";
-
-// import { firebaseConfig } from "./configuration/config";
-// import React, { useState, useEffect } from "react";
-// import { db } from "./configuration/firebase";
 
 function App() {
   return (
     <div className="App">
-      <h1> Examinations </h1>
-      
-      <Gre />
+      <AuthProvider>
+        <Router>
+          <Nav />
+          <Switch>
 
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+
+            <Route exact path="/login">
+              <Login />
+            </Route>
+
+            <Route exact path="/forgotpassword">
+              <ForgotPassword />
+            </Route>
+
+            <PrivateRoute exact path="/examinations/gre">
+              <Gre />
+            </PrivateRoute>
+
+          </Switch>
+
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

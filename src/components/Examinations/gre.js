@@ -1,8 +1,7 @@
 import React from "react";
-import { db } from "../../configuration/firebase"
 
 export const Gre = () => {
-    var docRef = db.collection("examinations").doc("GRE");
+    // var docRef = db.collection("examinations").doc("GRE");
     // docRef.get().then((doc) => {
     //     if (doc.exists) {
     //         console.log("Document Data", doc.data());
