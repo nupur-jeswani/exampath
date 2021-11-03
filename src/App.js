@@ -29,9 +29,7 @@ function App() {
               <ForgotPassword />
             </Route>
 
-            <PrivateRoute exact path="/examinations/gre">
-              <Gre />
-            </PrivateRoute>
+            <PrivateRoute exact path="/examinations/gre" component={Gre} />
 
           </Switch>
 
