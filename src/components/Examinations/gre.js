@@ -1,9 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
-import firebase from "firebase/app";
 import { doc, getDoc } from "firebase/firestore";
-
 
 export const Gre = () => {
 
@@ -13,10 +11,11 @@ export const Gre = () => {
     useEffect(() => {
         const getDetails = async () => {
             const docRef = doc(db, "examinations", "GRE");
-            const docSnap = await getDoc(docRef);
+            const docSnap = await getDoc(docRef)
 
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
+                setData(docSnap.data());
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -27,20 +26,34 @@ export const Gre = () => {
         // return 
     }, [])
 
-    console.log(data);
-
     return (
         <div className="container-fluid">
-
-            <p className="m-5">{data.about}</p>
-
-            <ul>
-                {
-                    // data.cutoff.forEach(item => (
-                    //     <li>{item}</li>
-                    // ))
-                }
-            </ul>
+            <div>
+                {Object.entries(data).map((arr, arrID) => (
+                    <div key={arrID}>
+                        <div>
+                            {
+                                arr[0] !== "cutoff" && (
+                                    <>
+                                        <h2>{arr[0]}</h2>
+                                        <p>{arr[1]}</p>
+                                    </>
+                                )
+                            }
+                            {
+                                arr[0] === "cutoff" && (
+                                    <>
+                                        <h2>{arr[0]}</h2>
+                                        <ul>
+                                            {arr[1].map(item => <li>{item}</li>)}
+                                        </ul>
+                                    </>
+                                )
+                            }
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
