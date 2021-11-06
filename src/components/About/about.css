@@ -1,0 +1,36 @@
+.about {
+    height: 600px;
+    background-image: url('backdrop.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.header {
+    height: 600px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 80px;
+    padding-top: 15%;
+    letter-spacing: 30px;
+}
+
+.about-div {
+    background-color: rgb(247, 247, 247);
+    border-radius: 30px;
+}
+
+.about-heading {
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.about-images {
+    border-radius: 25px;
+}
+
+.about-text {
+    text-align: justify;
+    margin: 30px;
+}

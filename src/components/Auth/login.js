@@ -27,11 +27,11 @@ export default function Login() {
 
     return (
         <div className="m-4">
-            <Card className="m-2 mx-auto" style={{ maxWidth: "400px"}}>
+            <Card className="m-2 mx-auto" style={{ maxWidth: "400px" }}>
                 <Card.Body className="">
                     <h2 className="text-center mb-4">Login</h2>
-                    {error && <Alert variant="danger"> {error} </Alert> }
-                    
+                    {error && <Alert variant="danger"> {error} </Alert>}
+
                     <Form className="justify-content-center" onSubmit={handleSubmit}>
                         <Form.Group id="email" className="mb-2">
                             <Form.Label className="d-flex"> Email </Form.Label>
@@ -47,11 +47,14 @@ export default function Login() {
                         <Link to="/forgotpassword">Forgot Password?</Link>
                     </div>
                 </Card.Body>
-                
+
                 <div className="w-100 text-center mt-2 mb-2 p-2 border-top">
                     Need an account? <Link to="/signup">Sign Up</Link>
                 </div>
             </Card>
+            <div className="w-100 text-center mt-2 mb-2 p-2 border-top">
+                <Link to="/">Back To HomePage</Link>
+            </div>
         </div>
     )
 }

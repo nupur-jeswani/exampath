@@ -8,6 +8,8 @@ import { AuthProvider } from "./components/Auth/AuthContext";
 import Login from "./components/Auth/login";
 import PrivateRoute from "./components/privateRoutes";
 import { Gre } from "./components/Examinations/gre";
+import About from "./components/About/about";
+import Homepage from "./components/HomePage/homepage";
 
 function App() {
   return (
@@ -16,6 +18,10 @@ function App() {
         <Router>
           <Nav />
           <Switch>
+
+            <Route exact path="/">
+              <Homepage />
+            </Route>
 
             <Route exact path="/signup">
               <Signup />
@@ -30,6 +36,7 @@ function App() {
             </Route>
 
             <PrivateRoute exact path="/examinations/gre" component={Gre} />
+            <PrivateRoute exact path="/about" component={About} />
 
           </Switch>
 

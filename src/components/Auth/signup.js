@@ -59,6 +59,9 @@ export default function Signup() {
                     Already have an account? <Link to="/login">Login</Link>
                 </div>
             </Card>
+            <div className="w-100 text-center mt-2 mb-2 p-2 border-top">
+                <Link to="/">Back To HomePage</Link>
+            </div>
         </div>
     )
 }

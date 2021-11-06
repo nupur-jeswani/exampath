@@ -52,6 +52,9 @@ export default function ForgotPassword() {
                     Need an account? <Link to="/signup">Sign Up</Link>
                 </div>
             </Card>
+            <div className="w-100 text-center mt-2 mb-2 p-2 border-top">
+                <Link to="/">Back To HomePage</Link>
+            </div>
         </div>
     )
 }
