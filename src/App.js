@@ -13,6 +13,7 @@ import About from "./components/About/about";
 import Homepage from "./components/HomePage/homepage";
 import { useAuth } from "./components/Auth/AuthContext";
 import LandingPage from "./components/LandingPage/landing";
+import Universities from "./components/Universities/universities";
 
 function App() {
   const { currentUser } = useAuth();
@@ -43,6 +44,7 @@ function App() {
             <PrivateRoute exact path="/examinations/gre" component={Gre} />
             <PrivateRoute exact path="/examinations/gmat" component={Gmat} />
             <PrivateRoute exact path="/about" component={About} />
+            <PrivateRoute exact path="/universities" component={Universities} />
 
           </Switch>
 
