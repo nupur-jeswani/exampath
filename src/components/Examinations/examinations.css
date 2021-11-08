@@ -1,0 +1,10 @@
+.about-exam {
+    text-align: justify;
+    margin-top: 50px;
+}
+
+.about-exam p, li {
+    font-size: 18px;
+    line-height: 2;
+}
+

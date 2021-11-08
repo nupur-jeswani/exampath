@@ -1,17 +1,17 @@
 import React from 'react';
+import About from '../About/about';
 import ExamsList from '../Examinations/examsList';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from "../Auth/AuthContext";
 import { Link } from 'react-router-dom';
-import { UniCarousel } from '../Universities/carousel';
 
-export default function Homepage() {
+export default function LandingPage() {
 
     const { currentUser } = useAuth();
-
+    
     return (
         <div>
-            <UniCarousel />
+            <About />
             <hr />
             <ExamsList />
             <hr />
