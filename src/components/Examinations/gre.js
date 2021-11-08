@@ -6,197 +6,135 @@ import "./examinations.css";
 
 export const Gre = () => {
 
-    const [data, setData] = useState({});
-    const [examdata, setExamdata] = useState({});
+    // Core GRE States
+    const [about, setAbout] = useState("");
+    const [greMotive, setGreMotive] = useState([]);
+    const [registration, setRegistration] = useState([]);
+    const [examFee, setExamFee] = useState([]);
+    const [cutoff, setCutoff] = useState([]);
+    const [scoreCard, setScoreCard] = useState("");
+    const [prepTips, setPrepTips] = useState([]);
+
+    // Subsidary GRE States
+    const [intro, setIntro] = useState("");
+    const [greAnalytical, setGreAnalytical] = useState([]);
+    const [greQuantitative, setGreQuantitative] = useState([]);
+    const [greVerbal, setGreVerbal] = useState([]);
 
     // getting data and saving it in the state
     useEffect(() => {
         const getDetails = async () => {
             const docRef = doc(db, "examinations", "GRE");
-            const docSnap = await getDoc(docRef)
+            const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                // console.log("Document data:", docSnap.data());
-                setData(docSnap.data());
+                let data = docSnap.data();
+                setGreMotive(data.GREmotive);
+                setAbout(data.about);
+                setCutoff(data.cutoff);
+                setExamFee(data.examFee);
+                setPrepTips(data.preparationTips);
+                setRegistration(data.registration);
+                setScoreCard(data.scoreCard);
             } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
+        }
+        
+        getDetails();
+    }, []);
 
+    useEffect(() => {
+        const getExamDetails = async () => {
             const examPatternRef = doc(db, "examinations", "GRE", "Exam Pattern Information", "Information")
             const examPatternSnap = await getDoc(examPatternRef);
 
             if (examPatternSnap.exists()) {
-                setExamdata(examPatternSnap.data());
+                console.log("Document data:", examPatternSnap.data());
+                let data = examPatternSnap.data();
+                setIntro(data.introduction);
+                setGreAnalytical(data["GRE Analytical Writing"]);
+                setGreQuantitative(data["GRE Quantitative Reasoning"]);
+                setGreVerbal(data["GRE Verbal Reasoning"]);
             } else {
                 console.log("No such subcollection found!");
             }
-
         }
-        getDetails();
+        
+        getExamDetails();
     }, []);
-
-
-    // function renderDetail(val) {
-    //     return (
-    //         <>
-    //             <h3>GRE motive</h3>
-    //             <ul>
-    //                 {`${val.map(item => <li>{item}</li>)}`}
-    //             </ul>
-    //         </>
-    //     )
-    // }
-    
-    // function renderDetail2(val) {
-    //     return (
-    //         <>
-    //             <h3>About GRE (Graduate Record Examinations) - </h3>
-    //             <p>{`${val}`}</p>
-    //         </>
-    //     )
-    // }
 
     return (
         <div className="container">
             <div>
-                {
-                    // Object.entries(data).forEach(([key, value]) => {
-                    //     if (key === "about") {
-                    //         renderDetail2(value);
-                    //     }
-                    //     if (key === "GREmotive") {
-                    //         renderDetail(value);
-                    //     }
-                    // })
-                }
-            </div>
-            <div>
-                {
-                    Object.entries(data).map((arr, arrID) => (
-                        <div key={arrID}>
-                            <div className="container about-exam">
-                                {
-                                    arr[0] === "about" && (
-                                        <>
-                                            <h3>About GRE (Graduate Record Examinations) - </h3>
-                                            <p>{arr[1]}</p>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "GREmotive" && (
-                                        <>
-                                            <h3>Why should one consider giving GRE?</h3>
-                                            <p>You should consider giving GRE if - </p>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "registration" && (
-                                        <>
-                                            <h3>Registration details for GRE - </h3>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "examFee" && (
-                                        <>
-                                            <h3>Examination Fee Details - </h3>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "cutoff" && (
-                                        <>
-                                            <h3>GRE Cutoffs - </h3>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "scoreCard" && (
-                                        <>
-                                            <h3>What will your GREscore card contain? </h3>
-                                            <p>{arr[1]}</p>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "preparationTips" && (
-                                        <>
-                                            <h3>GRE Preparation Tips and Tricks -  </h3>
-                                            <p>Some preparation tips you might find helpful are - </p>
-                                            <ol>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ol>
-                                        </>
-                                    )
-                                }
-                            </div>
-                        </div>
+                <h2>About</h2>
+                <p>{about}</p>
+
+                <h2>GRE Motive</h2>
+                <ul>
+                    {greMotive.map((item, id) => (
+                        <li key={id}>{item}</li>
                     ))}
+                </ul>
+
+                <h2>Registration</h2>
+                <ul>
+                    {registration.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
+
+                <h2>Examination Fees</h2>
+                <ul>
+                    {examFee.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
+
+                <h2>Cut-off</h2>
+                <ul>
+                    {cutoff.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
+
+                <h2>Score Card</h2>
+                <p>{scoreCard}</p>
+
+                <h2>Preparation Tips</h2>
+                <ul>
+                    {prepTips.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
             </div>
+
+            {/* Exam Details */}
+
             <div>
-                {
-                    Object.entries(examdata).map((arr, arrID) => (
-                        <div key={arrID}>
-                            <div className="container about-exam">
-                                {
-                                    arr[0] === "introduction" && (
-                                        <>
-                                            <h3>Basic Structure of GRE examination - </h3>
-                                            <p>{arr[1]}</p>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "GRE Analytical Writing" && (
-                                        <>
-                                            <h4>GRE Analytical Writing - </h4>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "GRE Quantitative Reasoning" && (
-                                        <>
-                                            <h4>GRE Quantitative Reasoning - </h4>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
-                                {
-                                    arr[0] === "GRE Verbal Reasoning" && (
-                                        <>
-                                            <h4>GRE Verbal Reasoning - </h4>
-                                            <ul>
-                                                {arr[1].map(item => <li>{item}</li>)}
-                                            </ul>
-                                        </>
-                                    )
-                                }
+                <h2>Introduction</h2>
+                <p>{intro}</p>
 
-                            </div>
-                        </div>
-                    ))
+                <h2>GRE Analytical Writing</h2>
+                <ul>
+                    {greAnalytical.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
 
-                }
+                <h2>GRE Quantitative Reasoning</h2>
+                <ul>
+                    {greQuantitative.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
+
+                <h2>GRE Verbal Reasoning</h2>
+                <ul>
+                    {greVerbal.map((item, id) => (
+                        <li key={id}>{item}</li>
+                    ))}
+                </ul>
             </div>
         </div>
     );
