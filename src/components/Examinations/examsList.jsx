@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import gre from "./images/gre-img.png";
 import cat from "./images/cat-img.png";
@@ -7,8 +7,45 @@ import gmat from "./images/gmat-img.jpg";
 import ielts from "./images/ielts-img.jpg";
 import toefl from "./images/toefl-img.png";
 import { Card } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
+import { useAuth } from "../Auth/AuthContext";
 
 export default function ExamsList() {
+
+    const { currentUser } = useAuth();
+
+    function AskLoginModal(linkPath) {
+        const [show, setShow] = useState(false);
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+        var link = linkPath.linkPath;
+
+        return (
+            <>
+                {
+                    currentUser ?
+                        <>
+                            <Card.Link href={link} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                        </> :
+                        <>
+                            <Button onClick={handleShow} className="bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded"> View Details </Button>
+                        </>
+                }
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>LOGIN / CREATE ACCOUNT</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Hello User, Login to your account to see those details! If you don't have an account then you can create one right now!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="dark" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+        );
+    }
+
     return (
         <div className="container mx-auto">
             <div className="row mt-5 pt-5">
@@ -24,8 +61,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 GRE or Graduate Record Examinations is the entrance exam taken to pursue postgraduate studies in English-speaking nations.
                             </Card.Text>
-                            
-                            <Card.Link href={"/examinations/gre"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath={"/examinations/gre"} />
                         </Card.Body>
                     </Card>
                 </div>
@@ -39,7 +75,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 IELTS is the world’s most popular English language proficiency test conducted by IDP for higher education and migration.
                             </Card.Text>
-                            <Card.Link href={"/examinations/ielts"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath="/examinations/ielts" />
                         </Card.Body>
                     </Card>
                 </div>
@@ -53,7 +89,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 TOEFL is a computerized exam that tests the candidates’ English knowledge required to study, work, or migrate abroad.
                             </Card.Text>
-                            <Card.Link href={"/examinations/toefl"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath="/examinations/toefl" />
                         </Card.Body>
                     </Card>
                 </div>
@@ -67,7 +103,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 GMAT is a computer adaptive test taken to pursue management studies abroad.
                             </Card.Text>
-                            <Card.Link href={"/examinations/gmat"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath="/examinations/gmat" />
                         </Card.Body>
                     </Card>
                 </div>
@@ -81,7 +117,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 It is an examination that primarily tests the comprehensive understanding of various undergraduate subjects in engineering and science.
                             </Card.Text>
-                            <Card.Link href={"/examinations/gate"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath="/examinations/gate" />
                         </Card.Body>
                     </Card>
                 </div>
@@ -95,7 +131,7 @@ export default function ExamsList() {
                             <Card.Text className="mb-5">
                                 The Common Admission Test is a computer based test for admission in a graduate management programs.
                             </Card.Text>
-                            <Card.Link href={"/examinations/cat"} className="text-decoration-none bg-dark bg-gradient pt-2 ps-3 pb-2 pe-3 text-white rounded">View Details</Card.Link>
+                            <AskLoginModal linkPath="/examinations/cat" />
                         </Card.Body>
                     </Card>
                 </div>

@@ -28,7 +28,7 @@ export default function NavBar() {
     return (
         <>
             <Navbar bg="light" expand="lg" className="container-fluid  rounded-bottom shadow-sm" sticky="top">
-                <NavbarBrand className="ms-5" href="/"><img src={logo1} alt="exampath logo" height="40px" /></NavbarBrand>
+                <NavbarBrand className="ms-3" href="/"><img src={logo1} alt="exampath logo" height="40px" /></NavbarBrand>
                 <NavbarToggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
                     <Nav className="container-fluid justify-content-end fw-bold me-auto">

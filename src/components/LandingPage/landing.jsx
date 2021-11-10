@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import About from '../About/about';
 import ExamsList from '../Examinations/examsList';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useAuth } from "../Auth/AuthContext";
-import { Link } from 'react-router-dom';
 import { UniCarousel } from '../Universities/carousel';
+import { Modal, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
+    function AskLoginModal() {
+        const [show, setShow] = useState(false);
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
 
-    const { currentUser } = useAuth();
-    
+        return (
+            <>
+            {}
+                <div className="container-fluid m-5 p-5 mx-auto">
+                    <Button onClick={handleShow} className="pt-4 pb-4 ps-5 pe-5 fw-bold text-decoration-none fs-4 bg-info text-dark border border-light rounded-pill"> Search for Universities as per preference </Button>
+                </div>
+
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>LOGIN / CREATE ACCOUNT</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Hello User, Login to your account to see those details! If you don't have an account then you can create one right now!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="dark" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Link to="/login"> Login </Link>
+                        <Link to="/signup"> Create Account </Link>
+                    </Modal.Footer>
+                </Modal>
+            </>
+        );
+    }
+
     return (
         <div>
             <About />
@@ -18,9 +44,7 @@ export default function LandingPage() {
             <hr />
             <h1 className="p-5">LIST OF SOME TOP COLLEGES</h1>
             <UniCarousel />
-            <div className="container-fluid m-5 p-5 mx-auto">
-                <Link to={currentUser ? "/universities" : "/login"} className="pt-4 pb-4 ps-5 pe-5 fw-bold text-decoration-none fs-4 bg-info text-dark border border-light rounded-pill"> Search for Universities as per preference </Link>
-            </div>
+            <AskLoginModal />
         </div>
     )
 }
