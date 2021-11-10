@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./examinations.css";
+import { Offcanvas } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import ielts from "./images/ielts-img.jpg";
 
 export const Ielts = () => {
 
@@ -93,174 +96,228 @@ export const Ielts = () => {
         getDetails();
     }, []);
 
+    function Contents() {
+        const [show, setShow] = useState(false);
+
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+
+        return (
+            <>
+                <Button style={{ "backgroundColor": "rgb(121, 198, 201)", "color": "black" }} onClick={handleShow} className="fw-bolder pt-2 ps-4 pe-4 position-fixed bottom-0 end-0">
+                    TABLE OF CONTENTS
+                </Button>
+
+                <Offcanvas show={show} onHide={handleClose} className="bg-dark">
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title style={{ "color": "burlywood", "font-weight": "600" }}>Table of Contents</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <div className="index">
+                            <p>Introduction To IELTS - </p>
+                            <a href="#about">About IELTS Examination</a>
+                            <a href="#resultDetails">Result information for IELTS Examination</a>
+                            <a href="#cutoffDetails">Result information for IELTS Examination</a>
+                            <a href="#preptips">Preparation Tips for IELTS Examination</a>
+
+                            <p>IELTS Registration -</p>
+                            <a href="#registrationIntro">Registration Details</a>
+                            <a href="#onlineReg">Online Registration</a>
+                            <a href="#docs">Documents required for Registration</a>
+                            <a href="#examFees">Registration Fees</a>
+                            <a href="#payment">Registration Fees</a>
+                            <a href="#indicator">IELTS Indicator</a>
+
+                            <p>Core Details of IELTS Examination -</p>
+                            <a href="#examPatternIntro">Introduction to IELTS Examination</a>
+                            <a href="#examSyllabus">IELTS Syllabus</a>
+                            <ul>
+                                <li><a href="#speakingSection">IELTS Speaking Section</a></li>
+                                <li><a href="#listeningSection">IELTS Listening Section</a></li>
+                                <li><a href="#readingSection">IELTS Reading Section</a></li>
+                                <li><a href="#writingSection">IELTS Writing Section</a></li>
+
+                            </ul>
+                        </div>
+                    </Offcanvas.Body>
+                </Offcanvas>
+            </>
+        );
+    }
 
     return (
-        <div className="container">
-            <div className="about-exam">
+        <div className="container-fluid bg-light">
+            <Contents />
+            <div className="container">
+                <div className="about-exam">
+                    <div className="backdrop">
+                        <img src={ielts} alt="IELTS Illustration Backdrop" height="600px" />
+                        <div className="container-fluid image-content">
+                            <h1 className="fw-bolder">INTERNATIONAL ENGLISH LANGUAGE TESTING SYSTEM</h1>
+                            <h4>(IELTS)</h4>
+                        </div>
+                    </div>
+                    {/* Basic IELTS information */}
 
-                {/* Basic IELTS information */}
+                    <h3 id="about" className="heading">ABOUT THE EXAMINATION</h3>
+                    <p>{about}</p>
 
-                <h2>About IELTS</h2>
-                <p>{about}</p>
+                    <h3 id="resultDetails" className="heading">RESULT INFORMATION FOR IELTS EXAMINATION</h3>
+                    <ul>
+                        {ieltsResult.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Result Details</h2>
-                <ul>
-                    {ieltsResult.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 id="cutoffDetails" className="heading">CUTOFF DETAILS OF IELTS</h3>
+                    <p>{ieltscutoffs}</p>
 
-                <h2>CutOff Details</h2>
-                <p>{ieltscutoffs}</p>
+                    <h3 id="preptips" className="heading">PREPARATION TIPS FOR IELTS EXAMINATION</h3>
+                    <ul>
+                        {prepTips.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Preparation Tips</h2>
-                <ul>
-                    {prepTips.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-            </div>
+                    <h3>Registration Process for IELTS Exam</h3>
 
-            <div className="about-exam">
-                <h2>Registration Process for IELTS Exam</h2>
+                    <h4 id="registrationIntro" className="heading">REGISTRATION INFORMATION FOR IELTS EXAMINATION </h4>
+                    <ul>
+                        {ieltsRegDetails.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>IELTS Registration Details - </h4>
-                <ul>
-                    {ieltsRegDetails.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4 id="onlineReg" className="heading">ONLINE REGISTRATION FOR IELTS EXAMINATION</h4>
+                    <p>{ieltsOnlineReg[0]}</p>
+                    <ul>
+                        <li>
+                            STEP 1 -
+                            <p>{ieltsOnlineReg[1]}</p>
+                        </li>
+                        <li>
+                            STEP 2 -
+                            <ol>
+                                <li>{ieltsOnlineReg[2]}</li>
+                                <li>{ieltsOnlineReg[3]}</li>
+                            </ol>
+                        </li>
+                        <li>
+                            STEP 3 -
+                            <p>{ieltsOnlineReg[4]}</p>
+                        </li>
+                        <li>
+                            STEP 4 -
+                            <p>{ieltsOnlineReg[5]}</p>
+                        </li>
+                        <li>
+                            STEP 5 -
+                            <p>{ieltsOnlineReg[6]}</p>
+                        </li>
+                    </ul>
 
-                <h4>Online Registration for IELTS Examination</h4>
-                <p>{ieltsOnlineReg[0]}</p>
-                <ul>
-                    <li>
-                        STEP 1 -
-                        <p>{ieltsOnlineReg[1]}</p>
-                    </li>
-                    <li>
-                        STEP 2 -
+                    <h4 id="docs" className="heading">DOCUMENTS REQUIRED FOR IELTS REGISTRATION</h4>
+                    <ul>
+                        {ieltsReqDocs.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="examFees" className="heading">FEES FOR IELTS EXAMINATION</h4>
+                    <p>{ieltsExamFee}</p>
+
+                    <h4 id="payment" className="heading">MODE OF PAYMENT FOR IELTS EXAMINATION</h4>
+                    <ul>
+                        {ieltsPayMode.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="indicator" className="heading">WHAT IS IELTS INDICATOR?</h4>
+                    <ul>
+                        {ieltsRegIndicator.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h3>IELTS Exam Pattern Details -  </h3>
+
+                    <h4 id="examPatternIntro" className="heading">IELTS EXAM PATTERN</h4>
+                    <p>{ieltsIntro}</p>
+
+                    <h4 id="examSyllabus" className="heading">IELTS EXAM SYLLABUS DETAILS - </h4>
+                    <ul>
+                        <li>{ieltsSyllabus[0]}</li>
                         <ol>
-                            <li>{ieltsOnlineReg[2]}</li>
-                            <li>{ieltsOnlineReg[3]}</li>
+                            <li>{ieltsSyllabus[1]}</li>
+                            <li>{ieltsSyllabus[2]}</li>
                         </ol>
-                    </li>
-                    <li>
-                        STEP 3 -
-                        <p>{ieltsOnlineReg[4]}</p>
-                    </li>
-                    <li>
-                        STEP 4 -
-                        <p>{ieltsOnlineReg[5]}</p>
-                    </li>
-                    <li>
-                        STEP 5 -
-                        <p>{ieltsOnlineReg[6]}</p>
-                    </li>
-                </ul>
+                        <li>{ieltsSyllabus[3]}</li>
+                        <li>{ieltsSyllabus[4]}</li>
+                    </ul>
 
-                <h4>Documents Required for IELTS Registration</h4>
-                <ul>
-                    {ieltsReqDocs.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h5 id="speakingSection" className="heading">IELTS SPEAKING SECTION - </h5>
+                    <ul>
+                        {ieltsSpeaking.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>Examination Fees for IELTS</h4>
-                <p>{ieltsExamFee}</p>
+                    <h5 id="listeningSection" className="heading">IELTS LISTENING SECTION - </h5>
+                    <ul>
+                        <li>{ieltsListening[0]}</li>
+                        <li>{ieltsListening[1]}</li>
+                        <li>{ieltsListening[2]}</li>
+                        <li>{ieltsListening[3]}</li>
+                        <li>{ieltsListening[4]}</li>
+                        <li>{ieltsListening[5]}</li>
+                        <li>{ieltsListening[6]}</li>
+                        <li>{ieltsListening[7]}</li>
+                        <ol>
+                            <li>{ieltsListening[8]}</li>
+                            <li>{ieltsListening[9]}</li>
+                            <li>{ieltsListening[10]}</li>
+                            <li>{ieltsListening[11]}</li>
+                            <li>{ieltsListening[12]}</li>
+                            <li>{ieltsListening[13]}</li>
+                        </ol>
+                        <li>{ieltsListening[14]}</li>
+                    </ul>
 
-                <h4>Mode of Payment for IELTS Exam</h4>
-                <ul>
-                    {ieltsPayMode.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
 
-                <h4>What is IELTS indicator?</h4>
-                <ul>
-                    {ieltsRegIndicator.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h5 id="readingSection" className="heading">IELTS READING SECTION - </h5>
+                    <ul>
+                        <li>{ieltsReading[0]}</li>
+                        <li>{ieltsReading[1]}</li>
+                        <li>{ieltsReading[2]}</li>
+                        <li>{ieltsReading[3]}</li>
+                        <li>{ieltsReading[4]}</li>
+                        <li>{ieltsReading[5]}</li>
+                        <ol>
+                            <li>{ieltsReading[6]}</li>
+                            <li>{ieltsReading[7]}</li>
+                            <li>{ieltsReading[8]}</li>
+                            <li>{ieltsReading[9]}</li>
+                            <li>{ieltsReading[10]}</li>
+                            <li>{ieltsReading[11]}</li>
+                            <li>{ieltsReading[12]}</li>
+                            <li>{ieltsReading[13]}</li>
+                            <li>{ieltsReading[14]}</li>
+                            <li>{ieltsReading[15]}</li>
+                            <li>{ieltsReading[16]}</li>
+                        </ol>
+                        <li>{ieltsReading[17]}</li>
+                    </ul>
+
+                    <h5 id="writingSection" className="heading">IELTS WRITING SECTION - </h5>
+                    <ul>
+                        {ieltsWriting.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
-            <div className="about-exam">
-                <h2>IELTS Exam Pattern Details -  </h2>
-
-                <h4>IELTS Exam Pattern</h4>
-                <p>{ieltsIntro}</p>
-
-                <h5>IELTS Exam Syllabus - </h5>
-                <ul>
-                    <li>{ieltsSyllabus[0]}</li>
-                    <ol>
-                        <li>{ieltsSyllabus[1]}</li>
-                        <li>{ieltsSyllabus[2]}</li>
-                    </ol>
-                    <li>{ieltsSyllabus[3]}</li>
-                    <li>{ieltsSyllabus[4]}</li>
-                </ul>
-
-                <h5>IELTS Speaking Section - </h5>
-                <ul>
-                    {ieltsSpeaking.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>IELTS Listening Section - </h5>
-                <ul>
-                    <li>{ieltsListening[0]}</li>
-                    <li>{ieltsListening[1]}</li>
-                    <li>{ieltsListening[2]}</li>
-                    <li>{ieltsListening[3]}</li>
-                    <li>{ieltsListening[4]}</li>
-                    <li>{ieltsListening[5]}</li>
-                    <li>{ieltsListening[6]}</li>
-                    <li>{ieltsListening[7]}</li>
-                    <ol>
-                        <li>{ieltsListening[8]}</li>
-                        <li>{ieltsListening[9]}</li>
-                        <li>{ieltsListening[10]}</li>
-                        <li>{ieltsListening[11]}</li>
-                        <li>{ieltsListening[12]}</li>
-                        <li>{ieltsListening[13]}</li>
-                    </ol>
-                    <li>{ieltsListening[14]}</li>
-                </ul>
-
-
-                <h5>IELTS Reading Section - </h5>
-                <ul>
-                    <li>{ieltsReading[0]}</li>
-                    <li>{ieltsReading[1]}</li>
-                    <li>{ieltsReading[2]}</li>
-                    <li>{ieltsReading[3]}</li>
-                    <li>{ieltsReading[4]}</li>
-                    <li>{ieltsReading[5]}</li>
-                    <ol>
-                        <li>{ieltsReading[6]}</li>
-                        <li>{ieltsReading[7]}</li>
-                        <li>{ieltsReading[8]}</li>
-                        <li>{ieltsReading[9]}</li>
-                        <li>{ieltsReading[10]}</li>
-                        <li>{ieltsReading[11]}</li>
-                        <li>{ieltsReading[12]}</li>
-                        <li>{ieltsReading[13]}</li>
-                        <li>{ieltsReading[14]}</li>
-                        <li>{ieltsReading[15]}</li>
-                        <li>{ieltsReading[16]}</li>
-                    </ol>
-                    <li>{ieltsReading[17]}</li>
-                </ul>
-
-                <h5>IELTS Writing Section - </h5>
-                <ul>
-                    {ieltsWriting.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-            </div>
         </div>
     );
 }

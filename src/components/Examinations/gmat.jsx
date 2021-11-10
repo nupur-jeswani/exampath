@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./examinations.css";
+import { Offcanvas } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import gmat from "./images/gmat-img.jpg";
 
 export const Gmat = () => {
 
@@ -143,181 +146,254 @@ export const Gmat = () => {
 
         getDetails();
     }, []);
-    
+
+    function Contents() {
+        const [show, setShow] = useState(false);
+
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+
+        return (
+            <>
+                <Button style={{ "backgroundColor": "rgb(121, 198, 201)", "color": "black" }} onClick={handleShow} className="fw-bolder pt-2 ps-4 pe-4 position-fixed bottom-0 end-0">
+                    TABLE OF CONTENTS
+                </Button>
+
+                <Offcanvas show={show} onHide={handleClose} className="bg-dark">
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title style={{ "color": "burlywood", "font-weight": "600" }}>Table of Contents</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <div className="index">
+                            <p>Introduction To TOEFL - </p>
+                            <a href="#about">About TOEFL Examination</a>
+                            <a href="#motive">Why should one choose to give TOEFL?</a>
+
+                            <p>TOEFL Registration -</p>
+                            <a href="#registrationIntro">Registration Details</a>
+                            <a href="#eligibilityTest">Eligibility Test</a>
+                            <a href="#docs">Documents required for Registration</a>
+                            <a href="#fee-and-pay">Registration Fees and Payment mode</a>
+                            <a href="#formCancellation">Cancelling Form / Rescheduling Details</a>
+
+                            <p>Core Details of TOEFL Examination -</p>
+                            <a href="#examPatternIntro">Introduction to TOEFL Examination</a>
+                            <a href="#examSyllabus">TOEFL Syllabus</a>
+                            <ul>
+                                <li><a href="#readingSection">TOEFL Reading Section</a></li>
+                                <li><a href="#speakingSection">TOEFL Speaking Section</a></li>
+                                <li><a href="#writingSection">TOEFL Writing Section</a></li>
+                                <li><a href="#listeningSection">TOEFL Listening Section</a></li>
+                            </ul>
+
+                            <p>Results and Scoring information -</p>
+                            <a href="#calScore">Calculating Scores</a>
+                            <a href="#scoreRange">Score Range</a>
+
+                            <p>Section wise Scoring pattern -</p>
+                            <ul>
+                                <li><a href="#readingListeningScore">TOEFL Reading and Listening Section</a></li>
+                                <li><a href="#speakingScore">TOEFL Speaking Section</a></li>
+                                <li><a href="#writingScore">TOEFL Writing Section</a></li>
+                            </ul>
+
+                            <a href="#getResult">Getting your TOEFL Scores</a>
+                            <a href="#reportScore">Reporting your TOEFL Scores</a>
+                            <a href="#convertScore">Converting Scores to Percentile</a>
+                            <a href="#difference">IELTS OR TOEFL?</a>
+                        </div>
+                    </Offcanvas.Body>
+                </Offcanvas>
+            </>
+        );
+    }
+
     return (
-        <div className="container">
-            <div className="about-exam">
+        <div className="container-fluid bg-light">
+            <Contents />
+            <div className="container">
+                <div className="about-exam">
+                    <div className="backdrop">
+                        <img src={gmat} alt="TOEFL Illustration Backdrop" height="600px" />
+                        <div className="container-fluid image-content">
+                            <h1 className="fw-bolder p-3">GRADUATE MANAGEMENT ADMISSION TEST</h1>
+                            <h4>(GMAT)</h4>
+                        </div>
+                    </div>
 
-                {/* Basic GMAT information */}
+                    {/* Basic GMAT information */}
 
-                <h2>About GMAT</h2>
-                <p>{about}</p>
+                    <h2>About GMAT</h2>
+                    <p>{about}</p>
 
-                <h2>GMAT Motive</h2>
-                <ul>
-                    {gmatMotive.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Motive</h2>
+                    <ul>
+                        {gmatMotive.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Examination Fees</h2>
-                <p>{examFee}</p>
+                    <h2>Examination Fees</h2>
+                    <p>{examFee}</p>
 
-                <h2>Preparation Tips</h2>
-                <ul>
-                    {prepTips.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>Preparation Tips</h2>
+                    <ul>
+                        {prepTips.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
 
-                {/* GMAT exam pattern information */}
+                    {/* GMAT exam pattern information */}
 
-                <h2>GMAT Exam Pattern</h2>
-                <ul>
-                    {examPattern.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3>EXAM PATTERN INFORMATION FOR GMAT EXAMINATION</h3>
+                    
+                    <h4>GMAT Exam Pattern</h4>
+                    <ul>
+                        {examPattern.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Section Wise Details of GMAT - </h2>
-                <ul>
-                    {gmatSectionDetail.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>Section Wise Details of GMAT - </h2>
+                    <ul>
+                        {gmatSectionDetail.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GMAT Analytical Writing Assesment</h2>
-                <h4>Assesment Details</h4>
-                <ul>
-                    {gmatAnalytical.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-                <h4>GMAT Analytical Writing Assesment Scoring</h4>
-                <ul>
-                    {gmatAWAScore.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Analytical Writing Assesment</h2>
+                    <h4>Assesment Details</h4>
+                    <ul>
+                        {gmatAnalytical.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                    <h4>GMAT Analytical Writing Assesment Scoring</h4>
+                    <ul>
+                        {gmatAWAScore.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GMAT Integrated Reasoning</h2>
-                <h4>Assesment Details</h4>
-                <ul>
-                    {gmatIntegrated.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-                <h4>GMAT Integrated Reasoning Scoring</h4>
-                <ul>
-                    {gmatIRScore.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Integrated Reasoning</h2>
+                    <h4>Assesment Details</h4>
+                    <ul>
+                        {gmatIntegrated.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                    <h4>GMAT Integrated Reasoning Scoring</h4>
+                    <ul>
+                        {gmatIRScore.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GMAT Quantative Reasoning</h2>
-                <h4>Assesment Details</h4>
-                <ul>
-                    {gmatQuantitative.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-                <h4>GMAT Quantative Reasoning Scoring</h4>
-                <ul>
-                    {gmatQuantScore.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Quantative Reasoning</h2>
+                    <h4>Assesment Details</h4>
+                    <ul>
+                        {gmatQuantitative.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                    <h4>GMAT Quantative Reasoning Scoring</h4>
+                    <ul>
+                        {gmatQuantScore.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GMAT Verbal Reasoning</h2>
-                <h4>Assesment Details</h4>
-                <ul>
-                    {gmatVerbal.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-                <h4>GMAT Verbal Reasoning Scoring</h4>
-                <ul>
-                    {gmatVerbalScore.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Verbal Reasoning</h2>
+                    <h4>Assesment Details</h4>
+                    <ul>
+                        {gmatVerbal.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                    <h4>GMAT Verbal Reasoning Scoring</h4>
+                    <ul>
+                        {gmatVerbalScore.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                {/* GMAT registration process information */}
-                
-                <h2>GMAT Registration Details</h2>
-                
-                <h4>Information you will need for Registration Process</h4>
-                <p>To Register for GMAT you need - </p>
-                <ul>
-                    {gmatRegInfo.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    {/* GMAT registration process information */}
 
-                <h4>GMAT Registration via Phone</h4>
-                <ul>
-                    {gmatPhoneReg.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h2>GMAT Registration Details</h2>
 
-                <h4>GMAT Registration via Mail process</h4>
-                <ul>
-                    {gmatMailReg.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>Information you will need for Registration Process</h4>
+                    <p>To Register for GMAT you need - </p>
+                    <ul>
+                        {gmatRegInfo.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>Offline Payment Mode process:</h4>
-                <ul>
-                    {gmatOfflinePay.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>GMAT Registration via Phone</h4>
+                    <ul>
+                        {gmatPhoneReg.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>GMAT Online Registration process</h4>
-                <ul>
-                    {gmatOnlineReg.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>GMAT Registration via Mail process</h4>
+                    <ul>
+                        {gmatMailReg.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>Online Payment Mode process</h4>
-                <ul>
-                    {gmatOnlinePay.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>Offline Payment Mode process:</h4>
+                    <ul>
+                        {gmatOfflinePay.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                {/* GMAT results and cutoff information */}
+                    <h4>GMAT Online Registration process</h4>
+                    <ul>
+                        {gmatOnlineReg.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Cutoff Information</h2>
+                    <h4>Online Payment Mode process</h4>
+                    <ul>
+                        {gmatOnlinePay.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>Factors Determining GMAT cutoff for an Institution</h4>
-                <ul>
-                    {gmatFactorsForCutoff.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    {/* GMAT results and cutoff information */}
 
-                <h4>General cutoffs</h4>
-                <p>{gmatGeneralCutoff}</p>
+                    <h2>Cutoff Information</h2>
 
-                <h4>GMAT cutoffs for the year 2021</h4>
-                <ul>
-                    {gmatRecentCutoff.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>Factors Determining GMAT cutoff for an Institution</h4>
+                    <ul>
+                        {gmatFactorsForCutoff.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h4>GMAT Cutoff For Top B-Schools in India</h4>
-                <ul>
-                    {gmatCutoffIndia.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h4>General cutoffs</h4>
+                    <p>{gmatGeneralCutoff}</p>
 
+                    <h4>GMAT cutoffs for the year 2021</h4>
+                    <ul>
+                        {gmatRecentCutoff.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4>GMAT Cutoff For Top B-Schools in India</h4>
+                    <ul>
+                        {gmatCutoffIndia.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                </div>
             </div>
         </div>
     );

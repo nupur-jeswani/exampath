@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./examinations.css";
+import { Offcanvas } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import gate from "./images/gate-img.png";
 
 export const Gate = () => {
 
@@ -96,131 +99,186 @@ export const Gate = () => {
         getDetails();
     }, []);
 
+    function Contents() {
+        const [show, setShow] = useState(false);
+
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+
+        return (
+            <>
+                <Button style={{ "backgroundColor": "rgb(121, 198, 201)", "color": "black" }} onClick={handleShow} className="fw-bolder pt-2 ps-4 pe-4 position-fixed bottom-0 end-0">
+                    TABLE OF CONTENTS
+                </Button>
+
+                <Offcanvas show={show} onHide={handleClose} className="bg-dark">
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title style={{ "color": "burlywood", "font-weight": "600" }}>Table of Contents</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <div className="index">
+                            <p>Introduction To GATE - </p>
+                            <a href="#about">About GATE Examination</a>
+                            <a href="#motive">Why should one choose to give GATE?</a>
+                            <a href="#cutoffDetails">Result information for GATE Examination</a>
+                            <a href="#preptips">Preparation Tips for GATE Examination</a>
+                            <a href="#examFees">Fees for GATE Examination</a>
+                            <a href="#changes">Changes in GATE-2022</a>
+
+                            <p>GATE Registration -</p>
+                            <ul>
+                                <li><a href="#registrationstep1">Step 1 in the registration procedure</a></li>
+                                <li><a href="#registrationstep2">Step 2 in the registration procedure </a></li>
+                                <li><a href="#registrationstep3">Step 3 in the registration procedure</a></li>
+                                <li><a href="#registrationstep4">Step 4 in the registration procedure</a></li>
+                                <li><a href="#registrationstep5">Step 5 in the registration procedure</a></li>
+                                <li><a href="#registrationstep6">Step 6 in the registration procedure</a></li>
+                                <li><a href="#editform">Steps to edit your registration form</a></li>
+                            </ul>
+
+                            <p>Core Details of GATE Examination -</p>
+                            <a href="#examPattern">Introduction to GATE Examination</a>
+                            <ul>
+                                <li><a href="#verbalAbility">GATE Verbal Ability Section</a></li>
+                                <li><a href="#numericalAbility">GATE Numerical Ability Section</a></li>
+                            </ul>
+                        </div>
+                    </Offcanvas.Body>
+                </Offcanvas>
+            </>
+        );
+    }
 
     return (
-        <div className="container">
-            <div className="about-exam">
+        <div className="container-fluid bg-light">
+            <Contents />
+            <div className="container">
+                <div className="about-exam">
+                    <div className="backdrop">
+                        <img src={gate} alt="GATE Illustration Backdrop" height="600px" />
+                        <div className="container-fluid image-content">
+                            <h1 className="fw-bolder">GRADUATE APTITUDE TEST IN ENGINEERING</h1>
+                            <h4>(GATE)</h4>
+                        </div>
+                    </div>
+                    {/* Basic GATE information */}
 
-                {/* Basic GATE information */}
+                    <h3 id="about" className="heading">ABOUT THE EXAMINATION</h3>
+                    <p>{about}</p>
 
-                <h2>About GATE</h2>
-                <p>{about}</p>
+                    <h3 id="motive" className="heading">WHY SHOULD ONE CONSIDER GIVING GATE?</h3>
+                    <ul>
+                        {gateMotive.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GATE Motive</h2>
-                <ul>
-                    {gateMotive.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 id="cutoffDetails" className="heading">CUTOFF DETAILS OF GATE</h3>
+                    <ul>
+                        {gateCutOff.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>GATE CutOffs</h2>
-                <ul>
-                    {gateCutOff.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 id="preptips" className="heading">PREPARATION TIPS FOR GATE EXAMINATION</h3>
+                    <ul>
+                        {prepTips.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Examination Fees</h2>
-                <ul>
-                    {examFee.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 id="examFees" className="heading">FEES FOR GATE EXAMINATION</h3>
+                    <ul>
+                        {examFee.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Preparation Tips</h2>
-                <ul>
-                    {prepTips.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 id="changes" className="heading">WHAT CHANGES WILL BE THERE IN GATE-2022? </h3>
+                    <ul>
+                        {gateRecentChanges.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>What changes will be there in GATE-2022? </h2>
-                <ul>
-                    {gateRecentChanges.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 className="heading">REGISTRATION INFORMATION FOR GATE EXAMINATION</h3>
+
+                    <h4 className="heading">STEPS TO FOLLOW FOR GATE REGISTRATION</h4>
+
+                    <h5 id="registrationstep1" className="heading">Step 1: GATE REGISTRATION</h5>
+                    <ul>
+                        {gateOnlineReg.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="registrationstep2" className="heading">Step 2: FILLING OF GATE ADMISSION FORM 2022</h5>
+                    <ul>
+                        {gateAppForm.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="registrationstep3" className="heading">Step 3: UPLOAD REQUIRED DOCUMENTS FOR GATE REGISTRATION</h5>
+                    <ul>
+                        {gateReqDocs.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="registrationstep4" className="heading">Step 4: PAYMENT OF GATE APPLICATION FEE</h5>
+                    <ul>
+                        {gatePayment.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="registrationstep5" className="heading">Step 5: ONLINE NET BANKING PAYMENT INFORMATION</h5>
+                    <ul>
+                        {gateOnlinePay.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="registrationstep6" className="heading">Step 6: ACCEPTING THE DECLARATION</h5>
+                    <ul>
+                        {gateDeclaration.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="editform" className="heading">STEPS TO EDIT - GATE-2022 APPLICATION CORRECTION</h5>
+                    <ul>
+                        {gateEditForm.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h3 className="heading">GATE EXAM PATTERN DETAILS</h3>
+
+                    <h4 id="examPattern" className="heading">EXAM PATTERN INFORMATION OF GATE</h4>
+                    <ul>
+                        {examPattern.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="verbalAbility" className="heading">VERBAL ABILITY SECTION - </h5>
+                    <ul>
+                        {gateVerbal.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="numericalAbility" className="heading">NUMERICAL ABILITY SECTION - </h5>
+                    <ul>
+                        {gateNumerical.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
-            <div className="about-exam">
-                <h2>Registration Details for GATE Exam</h2>
-
-                <h4>Steps to Register for Gate Exam</h4>
-                
-                <h4>Step 1: GATE Registration</h4>
-                <ul>
-                    {gateOnlineReg.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Step 2: Filling of GATE Application Form 2022</h4>
-                <ul>
-                    {gateAppForm.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Step 3: Upload Required Documents for GATE Registration</h4>
-                <ul>
-                    {gateReqDocs.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Step 4: Payment of GATE Application Fee 2022</h4>
-                <ul>
-                    {gatePayment.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Step 5: Online Net-Banking Payment Details:</h4>
-                <ul>
-                    {gateOnlinePay.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Step 6: Accepting the Declaration</h4>
-                <ul>
-                    {gateDeclaration.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Steps to edit: GATE 2022 Application Correction</h4>
-                <ul>
-                    {gateEditForm.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="about-exam">
-                <h2>GATE Exam Pattern Details -  </h2>
-
-                <h4>Exam Pattern</h4>
-                <ul>
-                    {examPattern.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>Verbal Ability includes - </h5>
-                <ul>
-                    {gateVerbal.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>Numerical Ability includes - </h5>
-                <ul>
-                    {gateNumerical.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-            </div>
         </div>
     );
 }

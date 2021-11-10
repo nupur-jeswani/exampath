@@ -67,7 +67,7 @@ export const Gre = () => {
         getExamDetails();
     }, []);
 
-    function Example() {
+    function Contents() {
         const [show, setShow] = useState(false);
 
         const handleClose = () => setShow(false);
@@ -114,20 +114,21 @@ export const Gre = () => {
 
     return (
         <div className="container-fluid bg-light">
-            <Example />
+            <Contents />
             <div className="container">
                 <div className="about-exam">
-                    <div className="gre-backdrop">
+                    <div className="backdrop">
                         <img src={gre} alt="GRE Illustration Backdrop" />
-                        <div className="container-fluid gre-image-content">
-                            <h1>GRADUATE RECORD EXAMINATION</h1>
-                            <h6>(GRE)</h6>
+                        <div className="container-fluid image-content">
+                            <h1 className="fw-bolder">GRADUATE RECORD EXAMINATION</h1>
+                            <h4>(GRE)</h4>
                         </div>
                     </div>
                     <h3 id="about" className="heading">ABOUT THE EXAMINATION</h3>
                     <p>{about}</p>
 
                     <h3 id="motive" className="heading">WHY SHOULD ONE CONSIDER GIVING GRE?</h3>
+                    <p>{greMotive}</p>
                     <ul>
                         {greMotive.map((item, id) => (
                             <li key={id}>{item}</li>

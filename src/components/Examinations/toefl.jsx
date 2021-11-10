@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./examinations.css";
+import { Offcanvas } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import toefl from "./images/toefl-img.png";
 
 export const Toefl = () => {
 
@@ -136,171 +139,234 @@ export const Toefl = () => {
         getDetails();
     }, []);
 
+    function Contents() {
+        const [show, setShow] = useState(false);
+
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+
+        return (
+            <>
+                <Button style={{ "backgroundColor": "rgb(121, 198, 201)", "color": "black" }} onClick={handleShow} className="fw-bolder pt-2 ps-4 pe-4 position-fixed bottom-0 end-0">
+                    TABLE OF CONTENTS
+                </Button>
+
+                <Offcanvas show={show} onHide={handleClose} className="bg-dark">
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title style={{ "color": "burlywood", "font-weight": "600" }}>Table of Contents</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <div className="index">
+                            <p>Introduction To TOEFL - </p>
+                            <a href="#about">About TOEFL Examination</a>
+                            <a href="#motive">Why should one choose to give TOEFL?</a>
+
+                            <p>TOEFL Registration -</p>
+                            <a href="#registrationIntro">Registration Details</a>
+                            <a href="#eligibilityTest">Eligibility Test</a>
+                            <a href="#docs">Documents required for Registration</a>
+                            <a href="#fee-and-pay">Registration Fees and Payment mode</a>
+                            <a href="#formCancellation">Cancelling Form / Rescheduling Details</a>
+
+                            <p>Core Details of TOEFL Examination -</p>
+                            <a href="#examPatternIntro">Introduction to TOEFL Examination</a>
+                            <a href="#examSyllabus">TOEFL Syllabus</a>
+                            <ul>
+                                <li><a href="#readingSection">TOEFL Reading Section</a></li>
+                                <li><a href="#speakingSection">TOEFL Speaking Section</a></li>
+                                <li><a href="#writingSection">TOEFL Writing Section</a></li>
+                                <li><a href="#listeningSection">TOEFL Listening Section</a></li>
+                            </ul>
+
+                            <p>Results and Scoring information -</p>
+                            <a href="#calScore">Calculating Scores</a>
+                            <a href="#scoreRange">Score Range</a>
+
+                            <p>Section wise Scoring pattern -</p>
+                            <ul>
+                                <li><a href="#readingListeningScore">TOEFL Reading and Listening Section</a></li>
+                                <li><a href="#speakingScore">TOEFL Speaking Section</a></li>
+                                <li><a href="#writingScore">TOEFL Writing Section</a></li>
+                            </ul>
+
+                            <a href="#getResult">Getting your TOEFL Scores</a>
+                            <a href="#reportScore">Reporting your TOEFL Scores</a>
+                            <a href="#convertScore">Converting Scores to Percentile</a>
+                            <a href="#difference">IELTS OR TOEFL?</a>
+                        </div>
+                    </Offcanvas.Body>
+                </Offcanvas>
+            </>
+        );
+    }
+
     return (
-        <div className="container">
-            <div className="about-exam">
+        <div className="container-fluid bg-light">
+            <Contents />
+            <div className="container">
+                <div className="about-exam">
+                    <div className="backdrop">
+                        <img src={toefl} alt="TOEFL Illustration Backdrop" height="600px" />
+                        <div className="container-fluid image-content">
+                            <h1 className="fw-bolder p-3">TEST OF ENGLISH AS A FOREGIN LANGUAGE</h1>
+                            <h4>(TOEFL)</h4>
+                        </div>
+                    </div>
 
-                {/* Basic TOEFL information */}
+                    {/* Basic TOEFL information */}
+                    <h3 id="about" className="heading">ABOUT THE EXAMINATION</h3>
+                    <p>{about}</p>
 
-                <h2>About TOEFL</h2>
-                <p>{about}</p>
+                    <h3 id="motive" className="heading">WHY SHOULD ONE CONSIDER GIVING TOEFL?</h3>
+                    <ul>
+                        {toeflMotive.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
 
-                <h2>Why should one consider giving TOEFL?</h2>
-                <ul>
-                    {toeflMotive.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
+                    <h3 className="heading">REGISTRATION INFORMATION FOR TOEFL</h3>
+
+                    <h4 id="registrationIntro" className="heading">TOEFL REGISTRATION DETAILS </h4>
+                    <p>{toeflRegDetails}</p>
+
+                    <h4 id="eligibilityTest" className="heading">TOEFL ELIGIBILITY TEST</h4>
+                    <ul>
+                        {toeflEligibilityTest.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="docs" className="heading">DOCUMENTS NECESSARY FOR TOEFL REGISTRATION</h4>
+                    <ul>
+                        {toeflReqDocs.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="fee-and-pay" className="heading">TOEFL REGISTRATION FEE AND PAYMENT MODE</h4>
+                    <p>{toeflExamFee}</p>
+
+                    <h4 id="formCancellation" className="heading">TOEFL REGISTRATION FORM CANCELLATION / RESCHEDULING</h4>
+                    <ul>
+                        {toeflCancellation.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h3 className="heading">EXAM PATTERN INFORMATION FOR TOEFL EXAMINATION</h3>
+
+                    <h4 id="examPatternIntro" className="heading">TOEFL EXAM PATTERN</h4>
+                    <p>{toeflExamPattern}</p>
+
+                    <h4 id="examSyllabus" className="heading">TOEFL EXAMINATION SYLLABUS DETAILS</h4>
+                    <p>{toeflSyllabusIntro}</p>
+
+                    <h5 id="readingSection" className="heading">TOEFL READING COMPREHENSION SECTION -</h5>
+                    <ul>
+                        {toeflReading.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="speakingSection" className="heading">TOEFL SPEAKING SECTION - </h5>
+                    <ul>
+                        <li>{toeflSpeaking[0]}</li>
+                        <li>{toeflSpeaking[1]}</li>
+                        <li>{toeflSpeaking[2]}</li>
+                        <ol>
+                            <li>{toeflSpeaking[3]}</li>
+                            <li>{toeflSpeaking[4]}</li>
+                            <li>{toeflSpeaking[5]}</li>
+                        </ol>
+                        <li>{toeflSpeaking[6]}</li>
+                    </ul>
+
+                    <h5 id="writingSection" className="heading">TOEFL WRITING SECTION - </h5>
+                    <ul>
+                        <li>{toeflWriting[0]}</li>
+                        <li>{toeflWriting[1]}</li>
+                        <li>{toeflWriting[2]}</li>
+                        <ol>
+                            <li>{toeflWriting[3]}</li>
+                            <li>{toeflWriting[4]}</li>
+                            <li>{toeflWriting[5]}</li>
+                        </ol>
+                        <li>{toeflWriting[6]}</li>
+                    </ul>
+
+                    <h5 id="listeningSection" className="heading">TOEFL LISTENING SECTION - </h5>
+                    <ul>
+                        <li>{toeflListening[0]}</li>
+                        <li>{toeflListening[1]}</li>
+                        <ol>
+                            <li>{toeflListening[2]}</li>
+                            <li>{toeflListening[3]}</li>
+                            <li>{toeflListening[4]}</li>
+                        </ol>
+                        <li>{toeflListening[5]}</li>
+                    </ul>
+
+                    <h3 className="heading">RESULTS AND SCORING INFORMATION FOR TOEFL INFORMTATION</h3>
+
+                    <h4 id="calScore" className="heading">CALCULATION OF TOEFL SCORES</h4>
+                    <ul>
+                        {toeflScore.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="scoreRange" className="heading">TOEFL SCORE RANGE</h4>
+                    <ul>
+                        {toeflScoreRange.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="scoringDetails" className="heading">SCORING INFORMATION FOR VARIOUS SECTIONS OF TOEFL EXAMINATION </h4>
+
+                    <h5 id="readingListeningScore" className="heading">TOEFL READING AND LISTENING SECTION SCORING PATTERN - </h5>
+                    <ul>
+                        {toeflRLCal.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="speakingScore" className="heading">TOEFL SPEAKING SECTION SCORING PATTERN - </h5>
+                    <ul>
+                        {toeflSpeakingCal.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h5 id="writingScore" className="heading">TOEFL WRITING SECTION SCORING PATTERN - </h5>
+                    <ul>
+                        {toeflWritingCal.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="getResult" className="heading">HOW TO GET YOUR TOEFL RESULT?</h4>
+                    <p>{toeflReceiveResult}</p>
+
+                    <h4 id="reportScore" className="heading">HOW TO REPORT YOUR TOEFL SCORE?</h4>
+                    <p>{toeflScoreReporting}</p>
+
+                    <h4 id="convertScore" className="heading">HOW TO CONVERT YOUR TOEFL SCORES INTO PERCENTILE?</h4>
+                    <ul>
+                        {toeflPercentile.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h4 id="difference" className="heading">DIFFERENCE BETWEEN TOEFL AND IELTS AND WHICH EXAM SHOULD ONE GIVE? - </h4>
+                    <ul>
+                        {toeflIeltsCompare.map((item, id) => (
+                            <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
-            <div className="about-exam">
-
-                <h2>Registration Process for TOEFL Exam</h2>
-
-                <h4>TOEFL Registration Details - </h4>
-                <p>{toeflRegDetails}</p>
-
-                <h4>TOEFL Eligibility Test</h4>
-                <ul>
-                    {toeflEligibilityTest.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>Documents Required for TOEFL Registration</h4>
-                <ul>
-                    {toeflReqDocs.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>TOEFL Registration Fee and Payment Mode</h4>
-                <p>{toeflExamFee}</p>
-
-                <h4>TOEFL Registration Form Cancellation / Rescheduling</h4>
-                <ul>
-                    {toeflCancellation.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-            </div>
-
-            <div className="about-exam">
-                <h2>TOEFL Exam Pattern Details -  </h2>
-
-                <h4>TOEFL Exam Pattern</h4>
-                <p>{toeflExamPattern}</p>
-
-                <h3>TOEFL Exam Syllabus - </h3>
-                <p>{toeflSyllabusIntro}</p>
-
-                <h4>TOEFL Reading Comprehension Section Details</h4>
-                <ul>
-                    {toeflReading.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>TOEFL Speaking Section - </h5>
-                <ul>
-                    <li>{toeflSpeaking[0]}</li>
-                    <li>{toeflSpeaking[1]}</li>
-                    <li>{toeflSpeaking[2]}</li>
-                    <ol>
-                        <li>{toeflSpeaking[3]}</li>
-                        <li>{toeflSpeaking[4]}</li>
-                        <li>{toeflSpeaking[5]}</li>
-                    </ol>
-                    <li>{toeflSpeaking[6]}</li>
-                </ul>
-
-                <h5>TOEFL Writing Section - </h5>
-                <ul>
-                    <li>{toeflWriting[0]}</li>
-                    <li>{toeflWriting[1]}</li>
-                    <li>{toeflWriting[2]}</li>
-                    <ol>
-                        <li>{toeflWriting[3]}</li>
-                        <li>{toeflWriting[4]}</li>
-                        <li>{toeflWriting[5]}</li>
-                    </ol>
-                    <li>{toeflWriting[6]}</li>
-                </ul>
-
-                <h5>TOEFL Listening Section - </h5>
-                <ul>
-                    <li>{toeflListening[0]}</li>
-                    <li>{toeflListening[1]}</li>
-                    <ol>
-                        <li>{toeflListening[2]}</li>
-                        <li>{toeflListening[3]}</li>
-                        <li>{toeflListening[4]}</li>
-                    </ol>
-                    <li>{toeflListening[5]}</li>
-                </ul>
-            </div>
-
-            <div className="about-exam">
-                <h2>About TOEFL Results and Scoring Details -  </h2>
-
-                <h4>Calculation of TOEFL Scores </h4>
-                <ul>
-                    {toeflScore.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h4>TOEFL Score Range </h4>
-                <ul>
-                    {toeflScoreRange.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h3>Scoring information for various sections of TOEFL Examination - </h3>
-
-                <h4>TOEFL Reading and Listening Section Scoring Pattern</h4>
-                <ul>
-                    {toeflRLCal.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>TOEFL Speaking Section Scoring Pattern - </h5>
-                <ul>
-                    {toeflSpeakingCal.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h5>TOEFL Writing Section Scoring Pattern - </h5>
-                <ul>
-                    {toeflWritingCal.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h3>How to get your TOEFL Result?</h3>
-                <p>{toeflReceiveResult}</p>
-
-                <h3>How to Report your TOEFL scores?</h3>
-                <p>{toeflScoreReporting}</p>
-
-                <h3>How to convert Your TOEFL scores to Percentile?</h3>
-                <ul>
-                    {toeflPercentile.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-
-                <h3>Difference Between your TOEFL and IELTS and Which exam should you take? - </h3>
-                <ul>
-                    {toeflIeltsCompare.map((item, id) => (
-                        <li key={id}>{item}</li>
-                    ))}
-                </ul>
-            </div>
 
         </div>
     );

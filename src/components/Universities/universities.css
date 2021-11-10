@@ -1,0 +1,41 @@
+.background-gradient {
+    /* background: #abbaab; 
+    background: -webkit-linear-gradient(to left, #c4ece7, #023b42); 
+    background: linear-gradient(to right, #c4ece7, #023b42);  */
+}
+
+.collegeNameList {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px rgb(183, 192, 192) solid;
+}
+
+.collegeNameList:hover {
+    background-color: rgb(183, 192, 192) ;
+}
+
+.cardText {
+    text-align: justify;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(52, 58, 65);
+}
+
+.detailsButton {
+    padding: 10px 30px;
+    border-radius: 30px;
+    background-color: rgb(16, 1, 26);
+    font-weight: 600;
+}
+
+.detailsButton:hover {
+    padding: 10px 30px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(16, 1, 26);
+    color: rgb(16, 1, 26);
+    font-weight: 600;
+}
