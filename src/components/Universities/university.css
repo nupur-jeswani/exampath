@@ -1,0 +1,23 @@
+.backdrop {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.backdrop img {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    position: absolute;
+    border-radius: 30px;
+}
+
+.image-content {
+    letter-spacing: 10px;
+    position: relative;
+    height: 600px;
+    text-align: center;
+    vertical-align: text-bottom;
+    padding-top: 25%;
+    padding-bottom: 25%;
+}

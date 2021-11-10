@@ -207,7 +207,7 @@ export const Cat = () => {
                     <p>{about}</p>
 
                     <h2>Important Points About CAT</h2>
-                    <h4>Official Website for CAT - <a target="_blank" href="https://iimcat.ac.in/per/g01/pub/756/ASM/WebPortal/1/index.html?756@@1@@1">CAT</a></h4>
+                    <h4>Official Website for CAT - <a rel="noreferrer" target="_blank" href="https://iimcat.ac.in/per/g01/pub/756/ASM/WebPortal/1/index.html?756@@1@@1">CAT</a></h4>
                     <ul>
                         {catHighlights.map((item, id) => (
                             <li key={id}>{item}</li>

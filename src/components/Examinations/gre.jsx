@@ -17,6 +17,7 @@ export const Gre = () => {
     const [cutoff, setCutoff] = useState([]);
     const [scoreCard, setScoreCard] = useState("");
     const [prepTips, setPrepTips] = useState([]);
+    const [papers, setPapers] = useState([]);
 
     // Subsidary GRE States
     const [intro, setIntro] = useState("");
@@ -39,6 +40,7 @@ export const Gre = () => {
                 setPrepTips(data.preparationTips);
                 setRegistration(data.registration);
                 setScoreCard(data.scoreCard);
+                setPapers(data.papers);
             } else {
                 console.log("No such document!");
             }
@@ -189,6 +191,13 @@ export const Gre = () => {
                     <ul>
                         {prepTips.map((item, id) => (
                             <li key={id}>{item}</li>
+                        ))}
+                    </ul>
+
+                    <h3 id="preptips" className="heading">REFERENCE PAPERS FOR GRE EXAMINATION</h3>
+                    <ul>
+                        {papers.map((item, id) => (
+                            <li key={id}><a rel="noreferrer" target="_blank" href={item}>{item}</a></li>
                         ))}
                     </ul>
                 </div>

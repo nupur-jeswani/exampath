@@ -16,28 +16,28 @@ export default function Footer() {
                         <div className="row">
                             <div className="col-sm-12 col-md-4 mt-4">
                                 <h6>Connect with Nupur Jeswani via - </h6>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <IoLogoLinkedin></IoLogoLinkedin>
                                 </a>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <FaGithub></FaGithub>
                                 </a>
                             </div>
                             <div className="col-sm-12 col-md-4 mt-4">
                                 <h6>Connect with Nidhi Jain via - </h6>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <IoLogoLinkedin></IoLogoLinkedin>
                                 </a>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <FaGithub></FaGithub>
                                 </a>
                             </div>
                             <div className="col-sm-12 col-md-4 mt-4">
                                 <h6>Connect with Aarushi Sharma via - </h6>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <IoLogoLinkedin></IoLogoLinkedin>
                                 </a>
-                                <a target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
+                                <a rel="noreferrer" target="_blank" href="https://github.com/nupur-jeswani" className="me-4 text-reset">
                                     <FaGithub></FaGithub>
                                 </a>
                             </div>
