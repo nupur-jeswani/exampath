@@ -6,3 +6,10 @@
     line-height: 1;
     width: 100%; 
 }
+
+.collegeDetail-carousel h1, .collegeDetail-carousel h3 {
+    letter-spacing: 10px;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.247);
+    padding: 10px;
+}

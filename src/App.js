@@ -9,11 +9,16 @@ import Login from "./components/Auth/login";
 import PrivateRoute from "./components/privateRoutes";
 import { Gre } from "./components/Examinations/gre";
 import { Gmat } from "./components/Examinations/gmat";
+import { Gate } from "./components/Examinations/gate";
+import { Cat } from "./components/Examinations/cat";
+import { Ielts } from "./components/Examinations/ielts";
 import About from "./components/About/about";
 import Homepage from "./components/HomePage/homepage";
 import { useAuth } from "./components/Auth/AuthContext";
 import LandingPage from "./components/LandingPage/landing";
 import Universities from "./components/Universities/universities";
+import { Toefl } from "./components/Examinations/toefl";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const { currentUser } = useAuth();
@@ -43,11 +48,15 @@ function App() {
 
             <PrivateRoute exact path="/examinations/gre" component={Gre} />
             <PrivateRoute exact path="/examinations/gmat" component={Gmat} />
+            <PrivateRoute exact path="/examinations/gate" component={Gate} />
+            <PrivateRoute exact path="/examinations/cat" component={Cat} />
+            <PrivateRoute exact path="/examinations/ielts" component={Ielts} />
+            <PrivateRoute exact path="/examinations/toefl" component={Toefl} />
             <PrivateRoute exact path="/about" component={About} />
             <PrivateRoute exact path="/universities" component={Universities} />
 
           </Switch>
-
+        <Footer />
         </Router>
       </AuthProvider>
     </div>

@@ -12,12 +12,11 @@ export default function Homepage() {
     return (
         <div>
             <UniCarousel />
-            <hr />
-            <ExamsList />
-            <hr />
-            <div className="container-fluid m-5 mx-auto">
+            <div className="container-fluid m-5 p-5 mx-auto">
                 <Link to={currentUser ? "/universities" : "/login"} className="pt-4 pb-4 ps-5 pe-5 fw-bold text-decoration-none fs-4 bg-info text-dark border border-light rounded-pill"> Search for Universities as per preference </Link>
             </div>
+            <hr />
+            <ExamsList />
         </div>
     )
 }

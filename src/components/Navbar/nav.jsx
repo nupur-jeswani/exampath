@@ -27,7 +27,7 @@ export default function NavBar() {
 
     return (
         <>
-            <Navbar bg="light" expand="lg" className="container-fluid border-bottom border-secondary rounded-bottom shadow-sm" sticky="top">
+            <Navbar bg="light" expand="lg" className="container-fluid  rounded-bottom shadow-sm" sticky="top">
                 <NavbarBrand className="ms-5" href="/"><img src={logo1} alt="exampath logo" height="40px" /></NavbarBrand>
                 <NavbarToggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
@@ -38,14 +38,13 @@ export default function NavBar() {
                                 <NavLink href="/about">ABOUT US</NavLink>
                                 <NavDropdown title="EXAMINATIONS" id="basic-nav-dropdown">
                                     <NavDropdown.Item href="/examinations/gre">GRE</NavDropdown.Item>
-                                    <NavDropdown.Item href="/examinations/gre">TOELF</NavDropdown.Item>
-                                    <NavDropdown.Item href="/examinations/gre">IELTS</NavDropdown.Item>
+                                    <NavDropdown.Item href="/examinations/toefl">TOELF</NavDropdown.Item>
+                                    <NavDropdown.Item href="/examinations/ielts">IELTS</NavDropdown.Item>
                                     <NavDropdown.Item href="/examinations/gmat">GMAT</NavDropdown.Item>
-                                    <NavDropdown.Item href="/examinations/gre">GATE</NavDropdown.Item>
-                                    <NavDropdown.Item href="/examinations/gre">CAT</NavDropdown.Item>
+                                    <NavDropdown.Item href="/examinations/gate">GATE</NavDropdown.Item>
+                                    <NavDropdown.Item href="/examinations/cat">CAT</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavLink href="/universities">UNIVERSITIES</NavLink>
-                                <NavLink href="/universities">PROFILE</NavLink>
                                 <Button className="btn btn-dark fw-bold" onClick={handleLogOut}>LOGOUT</Button>
                             </>
                             :
