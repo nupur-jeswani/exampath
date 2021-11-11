@@ -13,6 +13,7 @@ export const Cat = () => {
     const [about, setAbout] = useState("");
     const [catHighlights, setCatHighlights] = useState([]);
     const [prepTips, setPrepTips] = useState([]);
+    const [papers, setPapers] = useState([]);
 
     // Subsidary CAT States
 
@@ -46,7 +47,7 @@ export const Cat = () => {
                 setAbout(data.about);
                 setCatHighlights(data["CAT highlights "]);
                 setPrepTips(data.preparationTips);
-
+                setPapers(data.papers);
             } else {
                 console.log("No such document!");
             }
@@ -147,42 +148,35 @@ export const Cat = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <div className="index">
-                            <p>Introduction To TOEFL - </p>
-                            <a href="#about">About TOEFL Examination</a>
-                            <a href="#motive">Why should one choose to give TOEFL?</a>
+                            <p>Introduction To CAT - </p>
+                            <a href="#about">About CAT Examination</a>
+                            <a href="#motive">Points to Remember</a>
+                            <a href="#preptips">Preparation Tips for CAT examination</a>
 
-                            <p>TOEFL Registration -</p>
-                            <a href="#registrationIntro">Registration Details</a>
-                            <a href="#eligibilityTest">Eligibility Test</a>
+                            <p>CAT Registration -</p>
+                            <a href="#appFormFill">Application From Details</a>
+                            <a href="#payment">Payment details</a>
+                            <a href="#examcenter">Exam Center Selection</a>
                             <a href="#docs">Documents required for Registration</a>
-                            <a href="#fee-and-pay">Registration Fees and Payment mode</a>
-                            <a href="#formCancellation">Cancelling Form / Rescheduling Details</a>
+                            <a href="#impRegDetails">Important Registration details</a>
 
-                            <p>Core Details of TOEFL Examination -</p>
-                            <a href="#examPatternIntro">Introduction to TOEFL Examination</a>
-                            <a href="#examSyllabus">TOEFL Syllabus</a>
+                            <p>Core Details of CAT Examination -</p>
+                            <a href="#examPattern">CAT Examination Pattern</a>
+                            <a href="#examSyllabus">CAT Syllabus</a>
                             <ul>
-                                <li><a href="#readingSection">TOEFL Reading Section</a></li>
-                                <li><a href="#speakingSection">TOEFL Speaking Section</a></li>
-                                <li><a href="#writingSection">TOEFL Writing Section</a></li>
-                                <li><a href="#listeningSection">TOEFL Listening Section</a></li>
+                                <li><a href="#verbalAbility">CAT Verbal and Reading Section</a></li>
+                                <li><a href="#ILReasoning">CAT data interpretation and logical reasoning Section</a></li>
+                                <li><a href="#quantApt">CAT Quantitative aptitude Section</a></li>
                             </ul>
 
-                            <p>Results and Scoring information -</p>
-                            <a href="#calScore">Calculating Scores</a>
-                            <a href="#scoreRange">Score Range</a>
+                            <p>Scoring information -</p>
+                            <a href="#scoreCard">Score Card</a>
+                            <a href="#detailScore">Details on your score card</a>
+                            <a href="#percentileCal">Percentile Calculation</a>
 
-                            <p>Section wise Scoring pattern -</p>
-                            <ul>
-                                <li><a href="#readingListeningScore">TOEFL Reading and Listening Section</a></li>
-                                <li><a href="#speakingScore">TOEFL Speaking Section</a></li>
-                                <li><a href="#writingScore">TOEFL Writing Section</a></li>
-                            </ul>
-
-                            <a href="#getResult">Getting your TOEFL Scores</a>
-                            <a href="#reportScore">Reporting your TOEFL Scores</a>
-                            <a href="#convertScore">Converting Scores to Percentile</a>
-                            <a href="#difference">IELTS OR TOEFL?</a>
+                            <p>References for CAT Examination</p>
+                            <a href="#papers">Reference Papers for CAT</a>
+                            <a href="#books">Reference Papers for CAT</a>
                         </div>
                     </Offcanvas.Body>
                 </Offcanvas>
@@ -192,6 +186,7 @@ export const Cat = () => {
 
     return (
         <div className="container-fluid bg-light">
+            <Contents />
             <div className="container">
                 <div className="about-exam">
                     <div className="backdrop">
@@ -203,117 +198,130 @@ export const Cat = () => {
                     </div>
                     {/* Basic CAT information */}
 
-                    <h2>About CAT</h2>
+                    <h3 id="about" className="heading">ABOUT THE EXAMINATION</h3>
                     <p>{about}</p>
 
-                    <h2>Important Points About CAT</h2>
-                    <h4>Official Website for CAT - <a rel="noreferrer" target="_blank" href="https://iimcat.ac.in/per/g01/pub/756/ASM/WebPortal/1/index.html?756@@1@@1">CAT</a></h4>
+                    <h3 id="impDetails" className="heading text-uppercase">Important Points About CAT</h3>
+                    <h4 className="heading">Official Website for CAT - <a rel="noreferrer" target="_blank" href="https://iimcat.ac.in/per/g01/pub/756/ASM/WebPortal/1/index.html?756@@1@@1">CAT</a></h4>
                     <ul>
                         {catHighlights.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>Preparation Tips</h2>
+                    <h3 id="preptips" className="heading text-uppercase">Preparation Tips</h3>
                     <ul>
                         {prepTips.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>Registration Process for CAT Exam</h2>
+                    <h3 className="heading text-uppercase">Registration Process for CAT Exam</h3>
 
-                    <h4>Filling the Registration Form of CAT Examination</h4>
+                    <h4 id="appFormFill" className="heading text-uppercase">Filling the Registration Form of CAT Examination</h4>
                     <ul>
                         {catAppForm.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Payment Details for CAT Examination</h4>
+                    <h4 id="payment" className="heading text-uppercase">Payment Details for CAT Examination</h4>
                     <ul>
                         {catAppPay.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Selecting an Exam Center for CAT</h4>
+                    <h4 id="examcenter" className="heading text-uppercase">Selecting an Exam Center for CAT</h4>
                     <ul>
                         {catExamCenter.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Documents Required for CAT Registration</h4>
+                    <h4 id="docs" className="heading text-uppercase">Documents Required for CAT Registration</h4>
                     <ul>
                         {catReqDocs.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Important Details to remember while Registering for CAT </h4>
+                    <h4 id="impRegDetails" className="heading text-uppercase">Important Details to remember while Registering for CAT </h4>
                     <ul>
                         {catImpPoints.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>CAT Exam Pattern Details -  </h2>
+                    <h3 className="heading text-uppercase">CAT Exam Pattern Details -  </h3>
 
-                    <h4>CAT Exam Pattern</h4>
+                    <h4 id="examPattern" className="heading text-uppercase">CAT Exam Pattern</h4>
                     <ul>
                         {examPattern.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h5>CAT Exam Syllabus - </h5>
+                    <h4 id="examSyllabus" className="heading text-uppercase">CAT Exam Syllabus - </h4>
                     <ul>
                         {catSyllabus.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h5>CAT Verbal Ability and Reading Comprehension - </h5>
+                    <h5 id="verbalAbility" className="heading text-uppercase">CAT Verbal Ability and Reading Comprehension - </h5>
                     <ul>
                         {catVerbal.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h5>CAT Data Interpretation and Logical Reasoning - </h5>
+                    <h5 id="ILReasoning" className="heading text-uppercase">CAT Data Interpretation and Logical Reasoning - </h5>
                     <ul>
                         {catLogical.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h5>CAT quantitative Aptitude - </h5>
+                    <h5 id="quantApt" className="heading text-uppercase">CAT quantitative Aptitude - </h5>
                     <ul>
                         {catQuantitative.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>Details about CAT ScoreCard and Percentile Calculation</h2>
+                    <h3 className="heading text-uppercase">Details about CAT ScoreCard and Percentile Calculation</h3>
 
-                    <h4>About CAT's Score Card </h4>
+                    <h4 id="scoreCard" className="heading text-uppercase">About CAT's Score Card </h4>
                     <p>{intro}</p>
 
-                    <h4>Details mentioned on ScoreCard</h4>
+                    <h4 id="detailScore" className="heading text-uppercase">Details mentioned on ScoreCard</h4>
                     <ul>
                         {catScoreCard.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Calculating Percentile</h4>
+                    <h4 id="percentileCal" className="heading text-uppercase">Calculating Percentile</h4>
                     <ul>
                         {catPercentileCal.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
+                    <h3 id="papers" className="heading">REFERENCE PAPERS FOR CAT EXAMINATION</h3>
+                    <ul>
+                        {papers.map((item, id) => (
+                            <li key={id}><a rel="noreferrer" target="_blank" href={item}>{item}</a></li>
+                        ))}
+                    </ul>
+                    <h3 id="books" className="heading">REFERENCE BOOKS FOR CAT EXAMINATION</h3>
+                    <ul>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.snapdeal.com/product/quantitative-aptitude-for-cat-9th/655164604073?supc=SDL909849440&utm_source=earth&utm_medium=655164604073_372_364_599&vendorCode=S9b8a8&isSellerPage=true&fv=true&utm_source=earth_pla&utm_campaign=snapdeal_pla_account_pla_all_products_roas_1d_ftu&utm_medium=&utm_term=498562763992_118648795118_{bidstrategy}&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRuu45xZzR5_JGbVXM6XTDGr0hTmS6M0XZop8KzRqzg03DCBLULJMM8aAk5JEALw_wcB">How to Prepare for QUANTITATIVE APTITUDE for CAT | 9th Edition Paperback by Arun Sharma</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.flipkart.com/cat-books-arun-sharma-2021-set-4-quantitative-aptitude-logical-reasoning-data-interpretation-verbal-ability-reading-comprehension/p/itm0ce833084a194?pid=RBKG5YYA9FH4MJGZ&lid=LSTRBKG5YYA9FH4MJGZILVX9I&marketplace=FLIPKART&cmpid=content_regionalbooks_8003060057_u_8965229628_gmc_pla&tgi=sem,1,G,11214002,u,,,395332127672,,,,c,,,,,,,&ef_id=Cj0KCQiA-K2MBhC-ARIsAMtLKRulgEa9UrW7NgLx-AoYJ58PWM-PO9fypELQNPow1tXmtRHXMY1Mux8aAh7sEALw_wcB:G:s&s_kwcid=AL!739!3!395332127672!!!u!295092701166!&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRulgEa9UrW7NgLx-AoYJ58PWM-PO9fypELQNPow1tXmtRHXMY1Mux8aAh7sEALw_wcB&gclsrc=aw.ds">CAT Books By Arun Sharma 2021 ( Set Of 4 Books ) - Quantitative Aptitude + Logical Reasoning + Data Interpretation + Verbal Ability/Reading Comprehension  (Paperback, arun sharma)</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.oswaalbooks.com/book-detail/oswaal-cat-23-years-chapter-wise-and-topic-wise-solved-papers-9789354630712?utm_source=Google&campaign_ID=15145656424&pl=&n=g&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRuO3pApca1tp2zI6oSswwMFAABAbFPP0wG0nnRiLoGRwEXFxCCdbH4aApEJEALw_wcB">Oswaal CAT 23 Years Chapter-wise and Topic-wise Solved Papers</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Chapter-Wise-Solved-Previous-Meenakshi-Upadhyay/dp/9390185815/ref=asc_df_9390185815/?tag=googleshopdes-21&linkCode=df0&hvadid=396987716775&hvpos=&hvnetw=g&hvrand=11491598147710983456&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-963390175657&psc=1&ext_vrnc=hi">Chapter-Wise Solved Previous Years' Papers for CAT By Arun Sharma and Meenakshi Upadhyay Paperback</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

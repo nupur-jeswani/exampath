@@ -16,6 +16,7 @@ export const Gate = () => {
     const [gateMotive, setGateMotive] = useState([]);
     const [examFee, setExamFee] = useState([]);
     const [prepTips, setPrepTips] = useState([]);
+    const [papers, setPapers] = useState([]);
 
     // Subsidary GATE States
 
@@ -48,6 +49,7 @@ export const Gate = () => {
                 setGateCutOff(data.cutoff);
                 setExamFee(data.examFee);
                 setPrepTips(data.preparationTips);
+                setPapers(data.papers);
 
             } else {
                 console.log("No such document!");
@@ -142,6 +144,10 @@ export const Gate = () => {
                                 <li><a href="#verbalAbility">GATE Verbal Ability Section</a></li>
                                 <li><a href="#numericalAbility">GATE Numerical Ability Section</a></li>
                             </ul>
+
+                            <p>References for GATE Examination</p>
+                            <a href="#papers">Reference Papers for GATE</a>
+                            <a href="#books">Reference Papers for GATE</a>
                         </div>
                     </Offcanvas.Body>
                 </Offcanvas>
@@ -275,6 +281,20 @@ export const Gate = () => {
                         {gateNumerical.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
+                    </ul>
+
+                    <h3 id="papers" className="heading">REFERENCE PAPERS FOR GATE EXAMINATION</h3>
+                    <ul>
+                        {papers.map((item, id) => (
+                            <li key={id}><a rel="noreferrer" target="_blank" href={item}>{item}</a></li>
+                        ))}
+                    </ul>
+                    <h3 id="books" className="heading">REFERENCE BOOKS FOR GATE EXAMINATION</h3>
+                    <ul>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Computer-Science-Information-Technology-Pearson/dp/9354493688/ref=asc_df_9354493688/?tag=googleshopdes-21&linkCode=df0&hvadid=397083122054&hvpos=&hvnetw=g&hvrand=12042567112416578084&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-1360298744309&psc=1&ext_vrnc=hi">GATE Computer Science and Information Technology 2022 | By Pearson</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.oswaalbooks.com/book-detail/gate-12-years%E2%80%99-solved-papers-year-wise-2010-2021-for-2022-exam-9789354637605?utm_source=Google&campaign_ID=15143446686&pl=&n=g&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRtjijwseKSzPCeN33DCbrmBNkeJLwSzwt_j2PZFMo1iowitQTzWVZoaArKgEALw_wcB">GATE 12 Years’ Solved Papers Year-wise 2010-2021 (For 2022 Exam)</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.flipkart.com/gate-2022-computer-science-it-solved-papers/p/itm11fa09f15cc3a?pid=9789390564705&lid=LSTBOK9789390564705J7I22Y&marketplace=FLIPKART&cmpid=content_book_8003060057_u_8965229628_gmc_pla&tgi=sem,1,G,11214002,u,,,395332127672,,,,c,,,,,,,&ef_id=Cj0KCQiA-K2MBhC-ARIsAMtLKRuTqKxn7eK3euBts8yL_AbbtTib6Vvwmfxay6TAbEzTOtlBczDxBK8aAqkAEALw_wcB:G:s&s_kwcid=AL!739!3!395332127672!!!u!295092701166!&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRuTqKxn7eK3euBts8yL_AbbtTib6Vvwmfxay6TAbEzTOtlBczDxBK8aAqkAEALw_wcB&gclsrc=aw.ds">GATE 2022: Computer Science-IT Solved Papers  (Paperback, MADE EASY Editorial Board)</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.toppersnotes.com/product/ies-gate-hand-written-notes-electronics-telecommunication-engineering-complete-study-material/?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRvSXZ6bSlAJi1iqOqBIGEFU7H-kpjbolB4Jg13EUlDQeQUAsemitYoaAtCxEALw_wcB">IES/GATE Hand Written Notes Electronics and Communication Engineering Complete Study Material</a></li>
                     </ul>
                 </div>
             </div>

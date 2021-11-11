@@ -14,6 +14,7 @@ export const Gmat = () => {
     const [gmatMotive, setGmatMotive] = useState([]);
     const [examFee, setExamFee] = useState("");
     const [prepTips, setPrepTips] = useState([]);
+    const [papers, setPapers] = useState([]);
 
     // Subsidary GMAT States
 
@@ -57,7 +58,7 @@ export const Gmat = () => {
                 setAbout(data.about);
                 setExamFee(data.examFee);
                 setPrepTips(data.preparationTips);
-
+                setPapers(data.papers);
             } else {
                 console.log("No such document!");
             }
@@ -165,42 +166,43 @@ export const Gmat = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <div className="index">
-                            <p>Introduction To TOEFL - </p>
-                            <a href="#about">About TOEFL Examination</a>
-                            <a href="#motive">Why should one choose to give TOEFL?</a>
+                            <p>Introduction To GMAT - </p>
+                            <a href="#about">About GMAT Examination</a>
+                            <a href="#motive">Why should one choose to give GMAT?</a>
+                            <a href="#examFees">GMAT examination fees</a>
+                            <a href="#preptips">Preparation Tips for GMAT examination</a>
 
-                            <p>TOEFL Registration -</p>
-                            <a href="#registrationIntro">Registration Details</a>
-                            <a href="#eligibilityTest">Eligibility Test</a>
-                            <a href="#docs">Documents required for Registration</a>
-                            <a href="#fee-and-pay">Registration Fees and Payment mode</a>
-                            <a href="#formCancellation">Cancelling Form / Rescheduling Details</a>
-
-                            <p>Core Details of TOEFL Examination -</p>
-                            <a href="#examPatternIntro">Introduction to TOEFL Examination</a>
-                            <a href="#examSyllabus">TOEFL Syllabus</a>
+                            <p>Core Details of GMAT Examination -</p>
+                            <a href="#examPattern">Introduction to GMAT Examination</a>
+                            <a href="#sectionalDetails">GMAT Section Wise Details</a>
                             <ul>
-                                <li><a href="#readingSection">TOEFL Reading Section</a></li>
-                                <li><a href="#speakingSection">TOEFL Speaking Section</a></li>
-                                <li><a href="#writingSection">TOEFL Writing Section</a></li>
-                                <li><a href="#listeningSection">TOEFL Listening Section</a></li>
+                                <li><a href="#analyticalSection">GMAT Analytical Section</a></li>
+                                <li><a href="#writingSection">GMAT Writing Section</a></li>
+                                <li><a href="#integratedReasoningSection">GMAT Integrated Reasoning Section</a></li>
+                                <li><a href="#integratedReasoningSectionScoring">Scoring of Integrated Reasoning Section</a></li>
+                                <li><a href="#quantSection">GMAT Quantitative Section</a></li>
+                                <li><a href="#quantScoring">Scoring of Quantitative Section</a></li>
+                                <li><a href="#verbalSection">GMAT Verbal Section</a></li>
+                                <li><a href="#verbalScoring">Scoring of Verbal Section</a></li>
                             </ul>
 
-                            <p>Results and Scoring information -</p>
-                            <a href="#calScore">Calculating Scores</a>
-                            <a href="#scoreRange">Score Range</a>
+                            <p>GMAT Registration -</p>
+                            <a href="#regInfo">Registration Details</a>
+                            <a href="#regPhone">Telephonic Registration Details</a>
+                            <a href="#regMail">Registration through mail</a>
+                            <a href="#offlinePay">Offline Payment mode</a>
+                            <a href="#onlineReg">Online Registration</a>
+                            <a href="#onlinePay">Online Payment mode</a>
 
-                            <p>Section wise Scoring pattern -</p>
-                            <ul>
-                                <li><a href="#readingListeningScore">TOEFL Reading and Listening Section</a></li>
-                                <li><a href="#speakingScore">TOEFL Speaking Section</a></li>
-                                <li><a href="#writingScore">TOEFL Writing Section</a></li>
-                            </ul>
+                            <p>Cutoff information -</p>
+                            <a href="#determingCutoff">Determing Cutoffs</a>
+                            <a href="#generalcutoffs">General Cutoffs</a>
+                            <a href="#cutoffs">Cutoffs for 2021</a>
+                            <a href="#topB">Cutoff for top colleges</a>
 
-                            <a href="#getResult">Getting your TOEFL Scores</a>
-                            <a href="#reportScore">Reporting your TOEFL Scores</a>
-                            <a href="#convertScore">Converting Scores to Percentile</a>
-                            <a href="#difference">IELTS OR TOEFL?</a>
+                            <p>References for GRE Examination</p>
+                            <a href="#papers">Reference Papers for GRE</a>
+                            <a href="#books">Reference Papers for GMAT</a>
                         </div>
                     </Offcanvas.Body>
                 </Offcanvas>
@@ -223,20 +225,20 @@ export const Gmat = () => {
 
                     {/* Basic GMAT information */}
 
-                    <h2>About GMAT</h2>
+                    <h3 id="about" className="heading text-uppercase">About GMAT</h3>
                     <p>{about}</p>
 
-                    <h2>GMAT Motive</h2>
+                    <h3 id="motive" className="heading text-uppercase">GMAT Motive</h3>
                     <ul>
                         {gmatMotive.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>Examination Fees</h2>
+                    <h3 id="examFees" className="heading text-uppercase">Examination Fees</h3>
                     <p>{examFee}</p>
 
-                    <h2>Preparation Tips</h2>
+                    <h3 id="preptips" className="heading text-uppercase">Preparation Tips</h3>
                     <ul>
                         {prepTips.map((item, id) => (
                             <li key={id}>{item}</li>
@@ -246,72 +248,68 @@ export const Gmat = () => {
 
                     {/* GMAT exam pattern information */}
 
-                    <h3>EXAM PATTERN INFORMATION FOR GMAT EXAMINATION</h3>
+                    <h3 className="heading text-uppercase">EXAM PATTERN INFORMATION FOR GMAT EXAMINATION</h3>
                     
-                    <h4>GMAT Exam Pattern</h4>
+                    <h4 id="examPattern" className="heading text-uppercase">GMAT Exam Pattern</h4>
                     <ul>
                         {examPattern.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>Section Wise Details of GMAT - </h2>
+                    <h3 id="sectionalDetails" className="heading text-uppercase">Section Wise Details of GMAT - </h3>
                     <ul>
                         {gmatSectionDetail.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>GMAT Analytical Writing Assesment</h2>
-                    <h4>Assesment Details</h4>
+                    <h4 id="analyticalSection" className="heading text-uppercase">GMAT Analytical Writing Assesment details</h4>
                     <ul>
                         {gmatAnalytical.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
-                    <h4>GMAT Analytical Writing Assesment Scoring</h4>
+                    <h4 id="writingSection" className="heading text-uppercase">GMAT Analytical Writing Assesment Scoring</h4>
                     <ul>
                         {gmatAWAScore.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>GMAT Integrated Reasoning</h2>
-                    <h4>Assesment Details</h4>
+                    <h4 id="integratedReasoningSection" className="heading text-uppercase">GMAT Integrated Reasoning Assesment Details</h4>
                     <ul>
                         {gmatIntegrated.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
-                    <h4>GMAT Integrated Reasoning Scoring</h4>
+                    <h5 id="integratedReasoningSectionScoring" className="heading text-uppercase">GMAT Integrated Reasoning Scoring</h5>
                     <ul>
                         {gmatIRScore.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>GMAT Quantative Reasoning</h2>
-                    <h4>Assesment Details</h4>
+                    <h3 id="quantSection" className="heading text-uppercase">GMAT Quantative Reasoning Assesment Details</h3>
                     <ul>
                         {gmatQuantitative.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
-                    <h4>GMAT Quantative Reasoning Scoring</h4>
+                    <h4 id="quantScoring" className="heading text-uppercase">GMAT Quantative Reasoning Scoring</h4>
                     <ul>
                         {gmatQuantScore.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h2>GMAT Verbal Reasoning</h2>
-                    <h4>Assesment Details</h4>
+                    <h3 id="verbalSection" className="heading text-uppercase">GMAT Verbal Reasoning Assesment Details</h3>
                     <ul>
                         {gmatVerbal.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
-                    <h4>GMAT Verbal Reasoning Scoring</h4>
+                    <h4 id="verbalScoring" className="heading text-uppercase">GMAT Verbal Reasoning Scoring</h4>
                     <ul>
                         {gmatVerbalScore.map((item, id) => (
                             <li key={id}>{item}</li>
@@ -320,9 +318,9 @@ export const Gmat = () => {
 
                     {/* GMAT registration process information */}
 
-                    <h2>GMAT Registration Details</h2>
+                    <h3 className="heading text-uppercase">GMAT Registration Details</h3>
 
-                    <h4>Information you will need for Registration Process</h4>
+                    <h4 id="regInfo" className="heading text-uppercase">Information you will need for Registration Process</h4>
                     <p>To Register for GMAT you need - </p>
                     <ul>
                         {gmatRegInfo.map((item, id) => (
@@ -330,35 +328,35 @@ export const Gmat = () => {
                         ))}
                     </ul>
 
-                    <h4>GMAT Registration via Phone</h4>
+                    <h4 id="regPhone" className="heading text-uppercase">GMAT Registration via Phone</h4>
                     <ul>
                         {gmatPhoneReg.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>GMAT Registration via Mail process</h4>
+                    <h4 id="regMail" className="heading text-uppercase">GMAT Registration via Mail process</h4>
                     <ul>
                         {gmatMailReg.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Offline Payment Mode process:</h4>
+                    <h4 id="offlinePay" className="heading text-uppercase">Offline Payment Mode process:</h4>
                     <ul>
                         {gmatOfflinePay.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>GMAT Online Registration process</h4>
+                    <h4 id="onlineReg" className="heading text-uppercase">GMAT Online Registration process</h4>
                     <ul>
                         {gmatOnlineReg.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>Online Payment Mode process</h4>
+                    <h4 id="onlinePay" className="heading text-uppercase">Online Payment Mode process</h4>
                     <ul>
                         {gmatOnlinePay.map((item, id) => (
                             <li key={id}>{item}</li>
@@ -367,32 +365,43 @@ export const Gmat = () => {
 
                     {/* GMAT results and cutoff information */}
 
-                    <h2>Cutoff Information</h2>
+                    <h3 className="heading text-uppercase">Cutoff Information</h3>
 
-                    <h4>Factors Determining GMAT cutoff for an Institution</h4>
+                    <h4 id="determingCutoff" className="heading text-uppercase">Factors Determining GMAT cutoff for an Institution</h4>
                     <ul>
                         {gmatFactorsForCutoff.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>General cutoffs</h4>
+                    <h4 id="generalcutoffs" className="heading text-uppercase">General cutoffs</h4>
                     <p>{gmatGeneralCutoff}</p>
 
-                    <h4>GMAT cutoffs for the year 2021</h4>
+                    <h4 id="cutoffs" className="heading text-uppercase">GMAT cutoffs for the year 2021</h4>
                     <ul>
                         {gmatRecentCutoff.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
 
-                    <h4>GMAT Cutoff For Top B-Schools in India</h4>
+                    <h4 id="topB" className="heading text-uppercase">GMAT Cutoff For Top B-Schools in India</h4>
                     <ul>
                         {gmatCutoffIndia.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
                     </ul>
-
+                    <h3 id="papers" className="heading">REFERENCE PAPERS FOR GMAT EXAMINATION</h3>
+                    <ul>
+                        {papers.map((item, id) => (
+                            <li key={id}><a rel="noreferrer" target="_blank" href={item}>{item}</a></li>
+                        ))}
+                    </ul>
+                    <h3 id="books" className="heading">REFERENCE BOOKS FOR GMAT EXAMINATION</h3>
+                    <ul>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/GMAT-Official-Guide-2022-Bundle/dp/8126547367/ref=asc_df_8126547367/?tag=googleshopdes-21&linkCode=df0&hvadid=396987006477&hvpos=&hvnetw=g&hvrand=12313744227657356810&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-1364268758875&psc=1&ext_vrnc=hi">GMAT Official Guide 2022 Bundle: Books + Online Question Bank Paperback – 1</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Barrons-GMAT-Online-Tests-Bobby/dp/1438007981/ref=asc_df_1438007981/?tag=googleshopdes-21&linkCode=df0&hvadid=396986143623&hvpos=&hvnetw=g&hvrand=12313744227657356810&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-366371788531&psc=1&ext_vrnc=hi">GMAT with Online Test (Barron's Test Prep) Paperback – 1 January 2017</a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.snapdeal.com/product/mcgrawhill-education-gmat/622631468752?supc=SDL449690831&utm_source=earth&utm_medium=622631468752_375_364_1244&vendorCode=S94d7c&isSellerPage=true&fv=true&utm_source=earth_pla&utm_campaign=snapdeal_pla_account_pla_all_products_roas_1d_ftu&utm_medium=&utm_term=498562763992_118648795118_{bidstrategy}&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRs0-wRU2OfiwXF5J5mWvEyQXggJ4RH-gKkQ2S_Cz3t5cpzUh7W81NEaAoTbEALw_wcB">McGraw-Hill Education GMAT</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

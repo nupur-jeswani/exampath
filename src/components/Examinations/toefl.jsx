@@ -12,6 +12,7 @@ export const Toefl = () => {
     // Core TOEFL States
     const [about, setAbout] = useState("");
     const [toeflMotive, setToeflMotive] = useState([]);
+    const [papers, setPapers] = useState([]);
 
     // Subsidary TOEFL States
 
@@ -51,6 +52,7 @@ export const Toefl = () => {
                 let data = docSnap.data();
                 setAbout(data.about);
                 setToeflMotive(data.TOEFLmotive);
+                setPapers(data.papers);
             } else {
                 console.log("No such document!");
             }
@@ -193,6 +195,10 @@ export const Toefl = () => {
                             <a href="#reportScore">Reporting your TOEFL Scores</a>
                             <a href="#convertScore">Converting Scores to Percentile</a>
                             <a href="#difference">IELTS OR TOEFL?</a>
+
+                            <p>References for TOEFL Examination</p>
+                            <a href="#papers">Reference Papers for TOEFL</a>
+                            <a href="#books">Reference Papers for TOEFL</a>
                         </div>
                     </Offcanvas.Body>
                 </Offcanvas>
@@ -363,6 +369,22 @@ export const Toefl = () => {
                         {toeflIeltsCompare.map((item, id) => (
                             <li key={id}>{item}</li>
                         ))}
+                    </ul>
+
+                    <h3 id="papers" className="heading">REFERENCE PAPERS FOR TOEFL EXAMINATION</h3>
+                    <ul>
+                        {papers.map((item, id) => (
+                            <li key={id}><a rel="noreferrer" target="_blank" href={item}>{item}</a></li>
+                        ))}
+                    </ul>
+
+                    <h3 id="books" className="heading">REFERENCE BOOKS FOR TOEFL EXAMINATION</h3>
+                    <ul>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Official-Guide-GRE-General-Test/dp/9352607376/ref=asc_df_9352607376/?tag=googleshopdes-21&linkCode=df0&hvadid=396986321649&hvpos=&hvnetw=g&hvrand=10802206632015260020&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-406475572215&psc=1&ext_vrnc=hi">The Official Guide to the GRE General Test Paperback  </a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Official-Verbal-Reasoning-Practice-Questions/dp/935260735X/ref=asc_df_935260735X/?tag=googleshopdes-21&linkCode=df0&hvadid=396986064216&hvpos=&hvnetw=g&hvrand=10802206632015260020&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-406475572055&psc=1&ext_vrnc=hi">Official GRE Verbal Reasoning Practice Questions Paperback   </a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Princeton-Review-GRE-Prep-2022/dp/0525570489/ref=asc_df_0525570489/?tag=googleshopdes-21&linkCode=df0&hvadid=397006816756&hvpos=&hvnetw=g&hvrand=10802206632015260020&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-1259672230788&psc=1&ext_vrnc=hi">Princeton Review GRE Prep, 2022: 5 Practice Tests + Review & Techniques + Online Features (2022) (Graduate School Test Preparation) Paperback   </a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.amazon.in/Barron%60s-Essential-Words-Philip-Geer/dp/9387477010/ref=asc_df_9387477010/?tag=googleshopdes-21&linkCode=df0&hvadid=426508239022&hvpos=&hvnetw=g&hvrand=10802206632015260020&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9040246&hvtargid=pla-812133097569&psc=1&ext_vrnc=hi">Barron`S Essential Words For The Gre Paperback   </a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://www.bookishsanta.com/products/5-lb-book-of-gre-practice-problems-1-800-practice-problems-in-book-and-online?variant=37996211830979&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_campaign=gs-2021-03-01&utm_source=google&utm_medium=smart_campaign&gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRsitdbIb0UwsutiWyfutIY3wo3yYR13syIfD2FFDzqtg5uXZrJtkY8aArlVEALw_wcB">Book of GRE Practice Problems: 1,800+ Practice Problems in Book  </a></li>
                     </ul>
                 </div>
             </div>
