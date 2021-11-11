@@ -9,6 +9,7 @@ import toefl from "./images/toefl-img.png";
 import { Card } from "react-bootstrap";
 import { Modal, Button } from "react-bootstrap";
 import { useAuth } from "../Auth/AuthContext";
+import { Link } from 'react-router-dom';
 
 export default function ExamsList() {
 
@@ -40,6 +41,8 @@ export default function ExamsList() {
                         <Button variant="dark" onClick={handleClose}>
                             Close
                         </Button>
+                        <Link to="/login" className="pt-2 pb-2 ps-3 pe-3 bg-primary text-white text-decoration-none rounded"> Login </Link>
+                        <Link to="/signup" className="pt-2 pb-2 ps-3 pe-3 bg-primary text-white text-decoration-none rounded"> Create Account </Link>
                     </Modal.Footer>
                 </Modal>
             </>

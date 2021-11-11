@@ -41,7 +41,6 @@ const Universities = () => {
 		getDetails();
 	}, []);
 
-
 	return (
 		<div className="container-fluid">
 
@@ -74,7 +73,6 @@ const Universities = () => {
 
 							<div className="container">
 							{
-								// style={{"backgroundColor":"rgb(212, 234, 241)"}}
 								universities.filter(university => (university["college name"].toLowerCase().includes(search.toLowerCase()) || university["country"].toLowerCase().includes(search.toLowerCase()))).map((university, id) => (
 									search ?
 										<>
@@ -100,8 +98,8 @@ const Universities = () => {
 								return (
 									<>
 										<Col xs={12} sm={12} md={4} className="mb-5">
-											<Card style={{ width: '22rem', "backgroundColor":"white" }}>
-												<Card.Img variant="top" src="holder.js/100px180" />
+											<Card style={{ width: '22rem', "backgroundColor":"white"}}>
+												<Card.Img variant="top" src={doc["college image"]} />
 												<hr />
 												<Card.Body>
 													<Card.Title className="fw-bolder text-uppercase"> {doc["college name"]}</Card.Title>

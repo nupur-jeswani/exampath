@@ -21,3 +21,21 @@
     padding-top: 25%;
     padding-bottom: 25%;
 }
+
+.about-college {
+    text-align: justify;
+    padding: 40px 30px;
+    font-weight: 500;
+}
+
+.images {
+    width: 90%;
+    text-align: center;
+    align-items: center;
+}
+
+.about-college p, .about-college li {
+    font-size: 18px;
+    line-height: 2;
+    color: rgb(75, 75, 75);
+}

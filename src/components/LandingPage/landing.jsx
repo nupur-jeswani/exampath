@@ -28,8 +28,8 @@ export default function LandingPage() {
                         <Button variant="dark" onClick={handleClose}>
                             Close
                         </Button>
-                        <Link to="/login"> Login </Link>
-                        <Link to="/signup"> Create Account </Link>
+                        <Link to="/login" className="pt-2 pb-2 ps-3 pe-3 bg-primary text-white text-decoration-none rounded"> Login </Link>
+                        <Link to="/signup" className="pt-2 pb-2 ps-3 pe-3 bg-primary text-white text-decoration-none rounded"> Create Account </Link>
                     </Modal.Footer>
                 </Modal>
             </>
